@@ -1,13 +1,13 @@
 import styled from '@xstyled/styled-components'
 
-type Home = {
+type HomeProps = {
   temp: string
 }
-
-const Home = ({ temp }: Home) => <Text>{temp}</Text>
 
 const Text = styled.pBox`
   color: blue;
 `
+
+const Home = ({ temp }: HomeProps) => <Text>{temp}</Text>
 
 export default Home
