@@ -2,5 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 echo "Running pre-push checks..."
-yarn prettier --loglevel warn --check .
-yarn eslint .
+yarn --silent prettier --check .
+yarn --silent eslint .
