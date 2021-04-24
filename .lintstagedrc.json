@@ -1,6 +1,6 @@
 {
   "*.{js, ts, jsx, tsx}": [
-    "yarn prettier --loglevel warn --write .",
-    "yarn eslint . --fix --quiet"
+    "yarn --silent prettier --loglevel warn --write .",
+    "yarn --silent eslint . --fix --quiet"
   ]
 }
