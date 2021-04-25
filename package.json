@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postinstall": "husky install",
-    "reinstall": "rm -rf ./node_modules ./yarn.lock ./package-lock.json && yarn",
+    "reinstall": "yarn concurrently \"rm -rf ./node_modules\" \"rm -rf ./yarn.lock ./package-lock.json ./.next\" && yarn",
     "dev": "next dev",
     "build": "next build",
     "build:export": "next build && next export",
@@ -14,13 +14,15 @@
     "prettier": "prettier --loglevel warn --write .",
     "prettier:check": "prettier --check .",
     "eslint": "eslint . --fix --quiet",
-    "eslint:check": "eslint ."
+    "eslint:check": "eslint .",
+    "test": "cross-env NODE_ENV=test echo \"Not implemented yet!\""
   },
   "dependencies": {
     "@sentry/react": "^6.3.1",
     "@sentry/tracing": "^6.3.1",
     "@xstyled/styled-components": "^2.4.1",
     "@xstyled/system": "^2.4.0",
+    "axios": "^0.21.1",
     "next": "10.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -42,6 +44,8 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "commitlint": "^12.1.1",
+    "concurrently": "^6.0.2",
+    "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.1",
