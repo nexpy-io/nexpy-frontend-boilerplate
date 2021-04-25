@@ -1,4 +1,8 @@
 build
 node_modules
+*.config.js
 .eslintrc.js
-commitlint.config.js
+.next
+.husky
+.vscode
+src/**/*.test*

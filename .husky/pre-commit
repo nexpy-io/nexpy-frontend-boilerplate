@@ -3,3 +3,4 @@
 
 echo "Running pre-commit checks..."
 yarn --silent lint-staged
+yarn --silent type-check

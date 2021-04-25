@@ -1,8 +1,10 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     node: true,
     es2020: true,
+    commonjs: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -19,6 +21,9 @@ module.exports = {
     'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:prettier/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
@@ -27,21 +32,37 @@ module.exports = {
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
-    'import/extensions': 'off',
     'react/prop-types': 'off',
-    'jsx-a11y/anchor-is-valid': 'off',
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
-    'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
+    'react-hooks/exhaustive-deps': 'off',
     'react/no-unescaped-entities': 'off',
+    'import/extensions': 'off',
+    'import/prefer-default-export': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'import/no-cycle': [0, { ignoreExternal: true }],
-    'prefer-const': 'off',
-    'no-use-before-define': 'off',
+    'prefer-const': ['error'],
+    'arrow-parens': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'operator-linebreak': 'off',
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': 'off',
+    'no-use-before-define': ['error'],
     '@typescript-eslint/semi': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-use-before-define': [
       'error',
       { functions: false, classes: false, variables: true },
+    ],
+    '@typescript-eslint/no-empty-interface': [
+      'error',
+      {
+        allowSingleExtends: true,
+      },
     ],
   },
   settings: {
@@ -53,6 +74,9 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         paths: ['src'],
       },
+    },
+    react: {
+      version: 'detect',
     },
   },
 }

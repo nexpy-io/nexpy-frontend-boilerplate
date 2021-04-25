@@ -1,1 +1,5 @@
 # frontend-boilerplate
+
+### Dependencies
+
+- yarn
