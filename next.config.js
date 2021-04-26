@@ -14,6 +14,10 @@ const nextConfig = {
   poweredByHeader: false,
   pageExtensions: ['tsx', 'mdx'],
   include: [path.resolve(__dirname, 'src/assets/svg')],
+  i18n: {
+    locales: ['en-US', 'pt-BR'],
+    defaultLocale: 'en-US',
+  },
 }
 
 module.exports = withPlugins([...plugins], nextConfig)

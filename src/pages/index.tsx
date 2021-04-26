@@ -1,15 +1,31 @@
-import styled from '@xstyled/styled-components'
+import { GetServerSideProps, GetStaticPathsContext } from 'next'
+
+import Translate, { AvailableLocaleKeys } from 'components/Translate'
 
 import CodeBrackets from 'assets/svg/code-brackets.svg'
 
-const Text = styled.pBox`
-  color: blue;
-`
+type HomeProps = {
+  currentLocale: AvailableLocaleKeys
+}
 
-const Home = () => (
-  <Text>
+const Home = ({ currentLocale }: HomeProps) => (
+  <>
+    <Translate identifier='welcome-home-page' locale={currentLocale} />
     <CodeBrackets />
-  </Text>
+  </>
 )
+
+export const getStaticProps: GetServerSideProps = async context => {
+  return {
+    props: { currentLocale: context.locale ?? context.defaultLocale },
+  }
+}
+
+export const getStaticPaths = async ({ locales }: GetStaticPathsContext) => {
+  return {
+    paths: locales?.map(locale => ({ locale })),
+    fallback: true,
+  }
+}
 
 export default Home

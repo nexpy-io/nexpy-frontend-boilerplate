@@ -6,6 +6,7 @@
     "postinstall": "husky install",
     "reinstall": "yarn concurrently \"rm -rf ./node_modules\" \"rm -rf ./yarn.lock ./package-lock.json ./.next\" && yarn",
     "dev": "next dev",
+    "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "build:export": "next build && next export",
     "start": "next start",
