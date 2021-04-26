@@ -4,6 +4,6 @@ const Text = styled.pBox`
   color: blue;
 `
 
-const Home = () => <Text>oii</Text>
+const Home = () => <Text>oi</Text>
 
 export default Home
