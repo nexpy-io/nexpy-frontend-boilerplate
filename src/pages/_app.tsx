@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AppProps as NextAppProps } from 'next/app'
+import 'trackers/wdyr'
+
+import 'sanitize.css'
 
 import { initSentry } from 'utils/sentry'
 
