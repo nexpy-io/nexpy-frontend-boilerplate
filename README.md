@@ -7,6 +7,10 @@
 
 [frontend-boilerplate](https://github.com/nexpy-io/frontend-boilerplate) is an Nexpy.io open source template repository for front end development based on [Next.js](https://github.com/vercel/next.js) and [TypeScript](https://github.com/microsoft/TypeScript).
 
+## More Docs
+
+A components documentation is available here: [nexpy-frontend-boilerplate-storybook](https://nexpy-frontend-boilerplate-storybook.netlify.app/).
+
 ## Installation
 
 ### Package Manager
@@ -36,8 +40,6 @@ yarn postinstall
 ```
 
 This command will install the husky hooks in the git repository to control preprocessors for commits and pushes, such as code formatters and Eslint, and the required automatic project settings.
-
-A components documentation is here: [nexpy-frontend-boilerplate-storybook](https://nexpy-frontend-boilerplate-storybook.netlify.app/).
 
 ## Available scripts and usage
 
