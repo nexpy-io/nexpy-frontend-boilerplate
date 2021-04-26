@@ -6,9 +6,7 @@
 [![All Contributors](https://img.shields.io/github/all-contributors/nexpy-io/frontend-boilerplate/main)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [frontend-boilerplate](https://github.com/nexpy-io/frontend-boilerplate) is an Nexpy.io open source template repository for front end development based on [Next.js](https://github.com/vercel/next.js) and [TypeScript](https://github.com/microsoft/TypeScript).
@@ -87,6 +85,7 @@ Thanks goes to these wonderful people:
 <table>
   <tr>
     <td align="center"><a href="https://github.com/camilaffonseca"><img src="https://avatars.githubusercontent.com/u/54648900?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Camila Fonseca</b></sub></a><br /><a href="https://github.com/nexpy-io/frontend-boilerplate/commits?author=camilaffonseca" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/AllanOliveiraM"><img src="https://avatars.githubusercontent.com/u/41436010?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Allan Oliveira Miraballes</b></sub></a><br /><a href="https://github.com/nexpy-io/frontend-boilerplate/commits?author=AllanOliveiraM" title="Code">💻</a></td>
   </tr>
 </table>
 
