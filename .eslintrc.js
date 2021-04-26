@@ -45,6 +45,7 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     'arrow-parens': 'off',
     'comma-dangle': 'off',
+    'global-require': 'off',
     'operator-linebreak': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'no-use-before-define': ['error'],
