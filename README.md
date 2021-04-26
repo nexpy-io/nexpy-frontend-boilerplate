@@ -3,11 +3,12 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3e48b52d-4edf-4bb9-bdb3-bff075a249b9/deploy-status)](https://app.netlify.com/sites/nexpy-frontend-boilerplate-storybook/deploys)
 ![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=nexpy-frontend-boilerplate)
 [![License](https://img.shields.io/github/license/nexpy-io/frontend-boilerplate?style=flat)](https://github.com/nexpy-io/frontend-boilerplate/blob/main/LICENSE)
-[![All Contributors](https://img.shields.io/github/all-contributors/nexpy-io/frontend-boilerplate/main)](#contributors-)
 
+<!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+<!-- prettier-ignore-end -->
 
 [frontend-boilerplate](https://github.com/nexpy-io/frontend-boilerplate) is an Nexpy.io open source template repository for front end development based on [Next.js](https://github.com/vercel/next.js) and [TypeScript](https://github.com/microsoft/TypeScript).
 
