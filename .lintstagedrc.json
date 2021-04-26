@@ -1,3 +1,3 @@
 {
-  "*.{js, ts, jsx, tsx}": ["yarn --silent prettier", "yarn --silent eslint"]
+  "*": ["yarn --silent prettier", "yarn --silent eslint"]
 }
