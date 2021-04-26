@@ -1,10 +1,10 @@
-export const productionEnvironmentNames = ['production']
+export const PRODUCTION_ENVIRONMENT_NAMES = ['production']
 
-export const localEnvironmentNames = ['development', 'test']
+export const LOCAL_ENVIRONMENT_NAMES = ['development', 'test']
 
-export const defaultProductionEnvironmentName = 'production'
+export const DEFAULT_PRODUCTION_ENVIRONMENT_NAME = 'production'
 
-export const validEnvironmentNames = [
-  ...productionEnvironmentNames,
-  ...localEnvironmentNames,
+export const VALID_ENVIRONMENT_NAMES = [
+  ...PRODUCTION_ENVIRONMENT_NAMES,
+  ...LOCAL_ENVIRONMENT_NAMES,
 ]

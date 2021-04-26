@@ -1,7 +1,7 @@
 import {
-  productionEnvironmentNames,
-  validEnvironmentNames,
-  defaultProductionEnvironmentName,
+  PRODUCTION_ENVIRONMENT_NAMES,
+  VALID_ENVIRONMENT_NAMES,
+  DEFAULT_PRODUCTION_ENVIRONMENT_NAME,
 } from 'constants/environment'
 
 export const getPublicEnvironmentConfig = () => ({
@@ -14,14 +14,14 @@ export const getNodeEnv = () => ({
 })
 
 export const validEnvNameOrProduction = (envName: string) => {
-  if (validEnvironmentNames.includes(envName)) {
+  if (VALID_ENVIRONMENT_NAMES.includes(envName)) {
     return envName
   }
 
-  return defaultProductionEnvironmentName
+  return DEFAULT_PRODUCTION_ENVIRONMENT_NAME
 }
 
 export const isProductionMode = (): boolean =>
-  productionEnvironmentNames.includes(
+  PRODUCTION_ENVIRONMENT_NAMES.includes(
     validEnvNameOrProduction(process.env.NODE_ENV)
   )
