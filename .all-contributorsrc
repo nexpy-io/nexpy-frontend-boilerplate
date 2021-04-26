@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "camilaffonseca",
+      "name": "Camila Fonseca",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54648900?v=4",
+      "profile": "https://github.com/camilaffonseca",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "frontend-boilerplate",
+  "projectOwner": "nexpy-io",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
