@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 
 import Translate, { AvailableLocaleKeys } from 'components/Translate'
 
@@ -15,7 +15,7 @@ const Home = ({ currentLocale }: HomeProps) => (
   </>
 )
 
-export const getStaticProps: GetServerSideProps = async context => {
+export const getStaticProps: GetStaticProps = async context => {
   return {
     props: { currentLocale: context.locale ?? context.defaultLocale },
   }
