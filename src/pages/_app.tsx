@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AppProps as NextAppProps, NextWebVitalsMetric } from 'next/app'
+import { Preflight } from '@xstyled/styled-components'
 import 'trackers/wdyr'
 
 import 'sanitize.css'
@@ -25,7 +26,10 @@ interface AppProps extends NextAppProps {
 
 // Workaround for https://github.com/vercel/next.js/issues/8592
 const App = ({ Component, pageProps, err }: AppProps) => (
-  <Component {...pageProps} err={err} />
+  <>
+    <Preflight />
+    <Component {...pageProps} err={err} />
+  </>
 )
 
 export default App

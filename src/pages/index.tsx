@@ -1,24 +1,30 @@
 import { GetStaticProps } from 'next'
+import styled, { th } from '@xstyled/styled-components'
 
-import Translate, { AvailableLocaleKeys } from 'components/Translate'
+import Translate from 'components/Translate'
 
-import CodeBrackets from 'assets/svg/code-brackets.svg'
+import { DynamicAppProviders } from 'context'
+import { getDefaultStaticProps } from 'utils/defaultStaticProps'
 
-type HomeProps = {
-  currentLocale: AvailableLocaleKeys
-}
+import { PageProps } from 'types/pageProps'
 
-const Home = ({ currentLocale }: HomeProps) => (
-  <>
+const Button = styled.buttonBox`
+  background: ${th.color('secondary')};
+`
+
+const Login = ({ currentLocale, userSettings }: PageProps) => (
+  <DynamicAppProviders theme={userSettings.theme}>
+    <Button>oi</Button>
     <Translate identifier='welcome-home-page' locale={currentLocale} />
-    <CodeBrackets />
-  </>
+  </DynamicAppProviders>
 )
 
 export const getStaticProps: GetStaticProps = async context => {
   return {
-    props: { currentLocale: context.locale ?? context.defaultLocale },
+    props: {
+      ...getDefaultStaticProps(context),
+    },
   }
 }
 
-export default Home
+export default Login

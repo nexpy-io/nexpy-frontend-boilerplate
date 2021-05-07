@@ -2,7 +2,9 @@
 
 import React from 'react'
 
-if (process.env.NODE_ENV === 'development') {
+import { isProductionMode } from 'utils/environment'
+
+if (!isProductionMode()) {
   try {
     const whyDidYouRender = require('@welldone-software/why-did-you-render')
     whyDidYouRender(React, {

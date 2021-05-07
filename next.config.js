@@ -16,7 +16,7 @@ const nextConfig = {
   include: [path.resolve(__dirname, 'src/assets/svg')],
   i18n: {
     locales: ['en-US', 'pt-BR'],
-    defaultLocale: 'en-US',
+    defaultLocale: 'pt-BR',
   },
 }
 
