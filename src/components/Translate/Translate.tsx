@@ -1,21 +1,19 @@
 import { getLanguages } from 'locales'
 
+import { useLocale } from 'context/localeContext'
+
 const languages = getLanguages()
 
-export type LocaleKeys = keyof typeof languages
-
-export type TranslateProps = {
+type TranslateProps = {
   identifier: string
-  locale: LocaleKeys
-  defaultLocale?: LocaleKeys
 }
 
-const Translate = ({ identifier, locale }: TranslateProps) => {
+const Translate = ({ identifier }: TranslateProps) => {
+  const locale = useLocale()
   const currentLanguage = languages[locale]
+  const typedIdentifierKey = identifier as keyof typeof currentLanguage
 
-  const identifierKey = identifier as keyof typeof currentLanguage
-
-  return <>{currentLanguage[identifierKey] ?? ''}</>
+  return <>{currentLanguage[typedIdentifierKey] ?? ''}</>
 }
 
 export default Translate

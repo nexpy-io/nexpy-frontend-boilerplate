@@ -1,8 +1,8 @@
-import { AvailableLocaleKeys } from 'components/Translate'
+import { LocaleKeys } from 'types/locales'
 
-import { UserSettings } from 'types/userSettings'
+import { BusinessSettings } from 'types/businessSettings'
 
 export type PageProps = {
-  currentLocale: AvailableLocaleKeys
-  userSettings: UserSettings
+  currentLocale: LocaleKeys
+  businessSettings: BusinessSettings
 }

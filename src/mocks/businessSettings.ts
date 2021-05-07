@@ -1,14 +1,14 @@
-import { UserSettings } from 'types/userSettings'
+import { BusinessSettings } from 'types/businessSettings'
 
-const userSettings: UserSettings = {
+const businessSettings: BusinessSettings = {
   theme: {
     colors: {
       primary: '#f2f',
       secondary: '#ab2',
     },
   },
-  user: {
-    businessInfo: {
+  businessInfo: {
+    businessData: {
       businessName: 'Jaqueline Furtado',
     },
     imagePaths: {
@@ -17,4 +17,4 @@ const userSettings: UserSettings = {
   },
 }
 
-export default userSettings
+export default businessSettings
