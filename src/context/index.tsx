@@ -6,6 +6,7 @@ import { LocaleProvider } from 'context/localeContext'
 import { BusinessInfoProvider } from 'context/businessInfoContext'
 
 import defaultTheme from 'theme/defaultTheme'
+import defaultBusinessInfo from 'settings/defaultBusinessInfo'
 
 import { Theme } from 'types/theme'
 import { LocaleKeys } from 'types/locales'
@@ -25,7 +26,9 @@ const DynamicAppProviders = ({
   businessInfo,
   ...props
 }: DynamicAppProvidersProps) => (
-  <BusinessInfoProvider businessInfo={businessInfo}>
+  <BusinessInfoProvider
+    businessInfo={merge({}, defaultBusinessInfo, businessInfo)}
+  >
     <LocaleProvider locale={locale} {...props}>
       <ThemeProvider theme={merge({}, defaultTheme, theme)}>
         {children}
