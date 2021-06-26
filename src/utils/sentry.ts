@@ -1,20 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-console */
 import * as SentryEngine from '@sentry/react'
 import { Integrations } from '@sentry/tracing'
+
 import { getPublicEnvironmentConfig, isProductionMode } from 'utils/environment'
 
 const { NEXT_PUBLIC_SENTRY_DSN } = getPublicEnvironmentConfig()
 
 export const initSentry = () => {
   if (!isProductionMode()) {
-    console.info('Sentry skipped.')
+    // eslint-disable-next-line no-console
+    console.debug('[MONITORING] Sentry skipped.')
 
     return
   }
 
   if (!NEXT_PUBLIC_SENTRY_DSN) {
-    console.error('Sentry not loaded. A valid DNS config could not be found.')
+    // eslint-disable-next-line no-console
+    console.error(
+      '[MONITORING] Sentry not loaded. A valid DSN config could not be found.'
+    )
 
     return
   }
@@ -26,13 +29,14 @@ export const initSentry = () => {
       dsn: NEXT_PUBLIC_SENTRY_DSN,
     })
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(
-      'Sentry not loaded. An error was encountered when starting Sentry.'
+      '[MONITORING] Sentry not loaded. An error was encountered when starting Sentry.'
     )
   }
 }
 
-export const captureException = async (error: any) => {
+export const captureException = async (error: Error) => {
   if (isProductionMode()) {
     try {
       SentryEngine.captureException(error)
@@ -43,20 +47,24 @@ export const captureException = async (error: any) => {
         throw new Error()
       }
 
+      // eslint-disable-next-line no-console
       console.error(
-        `flush pass: ${success}`,
+        `Flush pass: ${success}`,
         'This exception was caught automatically and will be debugged.',
         'Your correction will be evaluated and contact support is not necessary.',
         error
       )
     } catch {
+      // eslint-disable-next-line no-console
       console.error(
-        'It was not possible to send exception data for Nexpy servers. Please report this bug!'
+        '[MONITORING] It was not possible to send exception data for Nexpy servers. Please report this bug!',
+        error
       )
     }
+  } else {
+    // eslint-disable-next-line no-console
+    console.error('[TRACKED_ERROR] ', error)
   }
-
-  console.error('isProductionMode: false', error)
 }
 
 export default SentryEngine

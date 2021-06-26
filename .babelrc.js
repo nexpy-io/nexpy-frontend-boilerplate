@@ -20,4 +20,9 @@ const plugins =
 module.exports = {
   presets: ['next/babel', '@babel/preset-typescript'],
   plugins: [...plugins],
+  env: {
+    test: {
+      presets: ['next/babel'],
+    },
+  },
 }

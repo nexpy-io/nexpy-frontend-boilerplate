@@ -5,6 +5,7 @@ module.exports = {
     node: true,
     es2020: true,
     commonjs: true,
+    jest: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -15,7 +16,7 @@ module.exports = {
     },
     project: './tsconfig.json',
   },
-  plugins: ['react', 'prettier', '@typescript-eslint'],
+  plugins: ['react', 'prettier', '@typescript-eslint', 'import-helpers'],
   extends: [
     'airbnb',
     'airbnb-typescript',
@@ -29,6 +30,7 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:import/typescript',
     'prettier',
+    'next',
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
@@ -65,6 +67,34 @@ module.exports = {
       'error',
       {
         allowSingleExtends: true,
+      },
+    ],
+    'import-helpers/order-imports': [
+      'error',
+      {
+        newlinesBetween: 'always',
+        groups: [
+          ['/^react/', '/^next/'],
+          'module',
+          '/^components/',
+          '/^assets/',
+          '/^pages/',
+          [
+            '/^trackers/',
+            '/^contexts/',
+            '/^providers/',
+            '/^services/',
+            '/^utils/',
+            '/^constants/',
+          ],
+          '/^settings/',
+          '/^types/',
+          '/^theme/',
+          '/^locales/',
+          '/^mocks/',
+          ['parent', 'sibling', 'index'],
+        ],
+        alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],
   },

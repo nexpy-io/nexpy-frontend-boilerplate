@@ -2,7 +2,7 @@ import { BusinessInfo } from 'types/businessSettings'
 
 const defaultBusinessInfo: BusinessInfo = {
   businessData: {
-    businessName: 'Jaqueline Furtado',
+    businessName: 'Nexpy',
   },
   imagePaths: {
     businessLogo: '/img/temp.png',

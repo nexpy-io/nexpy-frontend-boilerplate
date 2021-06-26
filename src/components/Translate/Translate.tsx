@@ -1,19 +1,24 @@
-import { getLanguages } from 'locales'
+import { memo } from 'react'
 
-import { useLocale } from 'context/localeContext'
+import useCurrentLocale from 'hooks/useCurrentLocale'
+
+import { LocaleKeys } from 'types/locales'
+
+import getLanguages from 'locales'
 
 const languages = getLanguages()
 
+type Identifier = keyof typeof languages[LocaleKeys]
+
 type TranslateProps = {
-  identifier: string
+  identifier: Identifier
 }
 
 const Translate = ({ identifier }: TranslateProps) => {
-  const locale = useLocale()
+  const locale = useCurrentLocale()
   const currentLanguage = languages[locale]
-  const typedIdentifierKey = identifier as keyof typeof currentLanguage
 
-  return <>{currentLanguage[typedIdentifierKey] ?? ''}</>
+  return <>{currentLanguage[identifier] ?? ''}</>
 }
 
-export default Translate
+export default memo(Translate)

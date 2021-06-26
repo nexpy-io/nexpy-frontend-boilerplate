@@ -9,4 +9,6 @@ const languages = {
   'pt-BR': ptBR,
 }
 
-export const getLanguages = () => languages
+const getLanguages = () => languages
+
+export default getLanguages

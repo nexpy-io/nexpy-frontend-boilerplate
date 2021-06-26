@@ -4,14 +4,16 @@ import React from 'react'
 
 import { isProductionMode } from 'utils/environment'
 
-if (!isProductionMode()) {
-  try {
-    const whyDidYouRender = require('@welldone-software/why-did-you-render')
-    whyDidYouRender(React, {
-      trackAllPureComponents: true,
-    })
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('whyDidYouRender: ', error)
-  }
+if (typeof window !== 'undefined' && !isProductionMode()) {
+  const whyDidYouRender = require('@welldone-software/why-did-you-render')
+
+  // eslint-disable-next-line no-console
+  console.debug("[TRACKERS] Applying 'whyDidYouRender' tracker.")
+
+  whyDidYouRender(React, {
+    trackAllPureComponents: true,
+    trackHooks: true,
+    logOwnerReasons: true,
+    collapseGroups: true,
+  })
 }

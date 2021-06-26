@@ -1,4 +1,4 @@
-import { getLanguages } from 'locales'
+import getLanguages from 'locales'
 
 const languages = getLanguages()
 

@@ -1,5 +1,6 @@
-const withPlugins = require('next-compose-plugins')
 const path = require('path')
+
+const withPlugins = require('next-compose-plugins')
 
 const withMDX = require('@next/mdx')({ extension: /\.mdx?$/ })
 const withReactSvg = require('next-react-svg')
@@ -7,9 +8,6 @@ const withReactSvg = require('next-react-svg')
 const plugins = [withMDX, withReactSvg]
 
 const nextConfig = {
-  future: {
-    webpack5: true,
-  },
   reactStrictMode: true,
   poweredByHeader: false,
   pageExtensions: ['tsx', 'mdx'],

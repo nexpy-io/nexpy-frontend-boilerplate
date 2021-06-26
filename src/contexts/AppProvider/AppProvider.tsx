@@ -1,31 +1,33 @@
 import { ReactNode } from 'react'
+
 import { ThemeProvider } from '@xstyled/styled-components'
-import { merge } from 'lodash'
+import merge from 'lodash/merge'
 
-import { LocaleProvider } from 'context/localeContext'
-import { BusinessInfoProvider } from 'context/businessInfoContext'
+import { BusinessInfoProvider } from 'contexts/businessInfoContext'
+import { LocaleProvider } from 'contexts/localeContext'
 
-import defaultTheme from 'theme/defaultTheme'
 import defaultBusinessInfo from 'settings/defaultBusinessInfo'
 
-import { Theme } from 'types/theme'
-import { LocaleKeys } from 'types/locales'
 import { BusinessInfo } from 'types/businessSettings'
+import { LocaleKeys } from 'types/locales'
+import { Theme } from 'types/theme'
 
-type DynamicAppProvidersProps = {
+import defaultTheme from 'theme/defaultTheme'
+
+type AppProviderProps = {
   children: ReactNode
   theme: Theme
   locale: LocaleKeys
   businessInfo: BusinessInfo
 }
 
-const DynamicAppProviders = ({
+const AppProvider = ({
   children,
   theme,
   locale,
   businessInfo,
   ...props
-}: DynamicAppProvidersProps) => (
+}: AppProviderProps) => (
   <BusinessInfoProvider
     businessInfo={merge({}, defaultBusinessInfo, businessInfo)}
   >
@@ -37,4 +39,4 @@ const DynamicAppProviders = ({
   </BusinessInfoProvider>
 )
 
-export default DynamicAppProviders
+export default AppProvider

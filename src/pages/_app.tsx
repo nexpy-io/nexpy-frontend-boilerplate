@@ -1,25 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AppProps as NextAppProps, NextWebVitalsMetric } from 'next/app'
+import { AppProps as NextAppProps } from 'next/app'
+import Head from 'next/head'
+
 import { Preflight } from '@xstyled/styled-components'
 import 'trackers/wdyr'
 
 import 'sanitize.css'
 
-import { sendBeacon } from 'services/analytics'
-
 import { initSentry } from 'utils/sentry'
 
 initSentry()
-
-let loaded: boolean
-
-export const reportWebVitals = (metrics: NextWebVitalsMetric) => {
-  if (!loaded) {
-    sendBeacon(metrics)
-    loaded = true
-  }
-}
-
 interface AppProps extends NextAppProps {
   err: any
 }
@@ -28,6 +18,9 @@ interface AppProps extends NextAppProps {
 const App = ({ Component, pageProps, err }: AppProps) => (
   <>
     <Preflight />
+    <Head>
+      <link rel='shortcut icon' href='/favicon.ico' />
+    </Head>
     <Component {...pageProps} err={err} />
   </>
 )

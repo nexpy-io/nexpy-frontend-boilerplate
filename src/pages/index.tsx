@@ -1,28 +1,36 @@
 import { GetStaticProps } from 'next'
 
-import Translate from 'components/Translate'
+import { Translate } from 'components'
 
-import DynamicAppProviders from 'context'
-import { getDefaultStaticProps } from 'utils/defaultStaticProps'
+import AppProvider from 'contexts/AppProvider'
+import { getDefaultStaticProps } from 'utils/defaultServerSideProps'
 
 import { PageProps } from 'types/pageProps'
 
-const Login = ({ currentLocale, businessSettings }: PageProps) => (
-  <DynamicAppProviders
-    theme={businessSettings.theme}
-    locale={currentLocale}
-    businessInfo={businessSettings.businessInfo}
-  >
-    <p>
-      <Translate identifier='welcome-home-page' />
-    </p>
-  </DynamicAppProviders>
-)
+import userSettingsMock from 'mocks/businessSettings'
 
-export const getStaticProps: GetStaticProps = async context => ({
-  props: {
-    ...getDefaultStaticProps(context),
-  },
-})
+const Login = ({ currentLocale }: PageProps) => {
+  const businessSettings = userSettingsMock
+
+  return (
+    <AppProvider
+      theme={businessSettings.theme}
+      locale={currentLocale}
+      businessInfo={businessSettings.businessInfo}
+    >
+      <p>
+        <Translate identifier='welcome-home-page' />
+      </p>
+    </AppProvider>
+  )
+}
+
+export const getStaticProps: GetStaticProps = async context => {
+  return {
+    props: {
+      ...getDefaultStaticProps(context),
+    },
+  }
+}
 
 export default Login
