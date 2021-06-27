@@ -3,8 +3,8 @@ import { ReactNode } from 'react'
 import { ThemeProvider } from '@xstyled/styled-components'
 import merge from 'lodash/merge'
 
-import { BusinessInfoProvider } from 'contexts/businessInfoContext'
-import { LocaleProvider } from 'contexts/localeContext'
+import { BusinessInfoProvider } from 'contexts/BusinessInfoContext'
+import { LocaleProvider } from 'contexts/LocaleContext'
 
 import defaultBusinessInfo from 'settings/defaultBusinessInfo'
 

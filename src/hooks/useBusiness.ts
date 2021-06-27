@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { BusinessInfoContext } from 'contexts/businessInfoContext'
+import { BusinessInfoContext } from 'contexts/BusinessInfoContext'
 
 const useBusiness = () => {
   const context = useContext(BusinessInfoContext)
