@@ -13,10 +13,8 @@ export const BusinessInfoProvider = ({
   businessInfo,
   children,
   ...props
-}: BusinessInfoProviderProps) => {
-  return (
-    <BusinessInfoContext.Provider value={businessInfo} {...props}>
-      {children}
-    </BusinessInfoContext.Provider>
-  )
-}
+}: BusinessInfoProviderProps) => (
+  <BusinessInfoContext.Provider value={businessInfo} {...props}>
+    {children}
+  </BusinessInfoContext.Provider>
+)

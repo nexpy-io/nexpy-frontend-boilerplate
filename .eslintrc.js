@@ -79,6 +79,7 @@ module.exports = {
           '/^components/',
           '/^assets/',
           '/^pages/',
+          '/^views/',
           [
             '/^trackers/',
             '/^contexts/',

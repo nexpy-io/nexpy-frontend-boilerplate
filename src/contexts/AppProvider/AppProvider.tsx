@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import { ThemeProvider } from '@xstyled/styled-components'
 import merge from 'lodash/merge'
 
+import { AuthProvider } from 'contexts/AuthContext'
 import { BusinessInfoProvider } from 'contexts/BusinessInfoContext'
 import { LocaleProvider } from 'contexts/LocaleContext'
 
@@ -33,7 +34,7 @@ const AppProvider = ({
   >
     <LocaleProvider locale={locale} {...props}>
       <ThemeProvider theme={merge({}, defaultTheme, theme)}>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </ThemeProvider>
     </LocaleProvider>
   </BusinessInfoProvider>

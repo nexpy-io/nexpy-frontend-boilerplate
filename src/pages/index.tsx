@@ -1,29 +1,18 @@
 import { GetStaticProps } from 'next'
 
-import { Translate } from 'components'
+import { PageWrapper } from 'components'
 
-import AppProvider from 'contexts/AppProvider'
+import { Home } from 'views'
+
 import { getDefaultStaticProps } from 'utils/defaultServerSideProps'
 
 import { PageProps } from 'types/pageProps'
 
-import userSettingsMock from 'mocks/businessSettings'
-
-const Login = ({ currentLocale }: PageProps) => {
-  const businessSettings = userSettingsMock
-
-  return (
-    <AppProvider
-      theme={businessSettings.theme}
-      locale={currentLocale}
-      businessInfo={businessSettings.businessInfo}
-    >
-      <p>
-        <Translate identifier='welcome-home-page' />
-      </p>
-    </AppProvider>
-  )
-}
+const Page = ({ currentLocale, ...props }: PageProps) => (
+  <PageWrapper currentLocale={currentLocale} {...props}>
+    <Home />
+  </PageWrapper>
+)
 
 export const getStaticProps: GetStaticProps = async context => {
   return {
@@ -33,4 +22,4 @@ export const getStaticProps: GetStaticProps = async context => {
   }
 }
 
-export default Login
+export default Page

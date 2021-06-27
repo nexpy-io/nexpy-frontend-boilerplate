@@ -13,10 +13,8 @@ export const LocaleProvider = ({
   locale,
   children,
   ...props
-}: LocaleProviderProps) => {
-  return (
-    <LocaleContext.Provider value={locale} {...props}>
-      {children}
-    </LocaleContext.Provider>
-  )
-}
+}: LocaleProviderProps) => (
+  <LocaleContext.Provider value={locale} {...props}>
+    {children}
+  </LocaleContext.Provider>
+)
