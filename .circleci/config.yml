@@ -6,6 +6,8 @@ jobs:
       - image: cimg/node:16.4.0
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn
