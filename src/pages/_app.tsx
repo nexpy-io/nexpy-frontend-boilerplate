@@ -8,6 +8,7 @@ import { Head } from 'components'
 
 import 'sanitize.css'
 
+import AppProvider from 'contexts/AppProvider'
 import { initSentry } from 'utils/sentry'
 
 initSentry()
@@ -17,11 +18,11 @@ interface AppProps extends NextAppProps {
 
 // Workaround for https://github.com/vercel/next.js/issues/8592
 const App = ({ Component, pageProps, err }: AppProps) => (
-  <>
+  <AppProvider>
     <Head />
     <Preflight />
     <Component {...pageProps} err={err} />
-  </>
+  </AppProvider>
 )
 
 export default App
