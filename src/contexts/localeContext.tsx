@@ -7,7 +7,7 @@ type LocaleProviderProps = {
   children: ReactNode
 }
 
-export const LocaleContext = createContext<LocaleKeys>('pt-BR')
+export const LocaleContext = createContext('pt-BR' as LocaleKeys)
 
 export const LocaleProvider = ({
   locale,

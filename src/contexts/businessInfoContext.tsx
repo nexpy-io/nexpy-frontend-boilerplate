@@ -7,7 +7,7 @@ type BusinessInfoProviderProps = {
   children: ReactNode
 }
 
-export const BusinessInfoContext = createContext<BusinessInfo | null>(null)
+export const BusinessInfoContext = createContext({} as BusinessInfo)
 
 export const BusinessInfoProvider = ({
   businessInfo,
