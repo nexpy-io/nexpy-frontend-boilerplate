@@ -36,18 +36,12 @@ const DynamicPageProvider = ({
     {...props}
   >
     <LocaleProvider locale={locale}>
-      <ThemeProvider theme={merge({}, defaultTheme, theme)}>
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={merge({}, defaultTheme, theme)}>{children}</ThemeProvider>
     </LocaleProvider>
   </BusinessInfoProvider>
 )
 
-const PageProviderWrapper = ({
-  children,
-  currentLocale,
-  ...props
-}: PageProps) => {
+const PageProviderWrapper = ({ children, currentLocale, ...props }: PageProps) => {
   const businessSettings = userSettingsMock
 
   return (

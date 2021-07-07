@@ -1,6 +1,4 @@
-const productionPlugins = [
-  ['transform-remove-console', { exclude: ['error', 'warn'] }],
-]
+const productionPlugins = [['transform-remove-console', { exclude: ['error', 'warn'] }]]
 
 const commonPlugins = [
   '@babel/plugin-proposal-optional-chaining',

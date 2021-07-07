@@ -1,18 +1,37 @@
-export type AuthData = {
-  token: string
-  isAuthenticated: boolean
-} | null
+import { LocaleKeys } from 'types/locales'
+
+export type SignIn = {
+  email: string
+  password: string
+}
 
 export type User = {
+  id: string
+  auth: {
+    token: string
+  }
   personalData: {
     firstName: string
     lastName: string
     fullName: string
+    email: string
+    avatarUrl: string
+    birthDate: string
+    phoneNumber: string
   }
-  email: string
-} | null
+  metadata: {
+    isActive: boolean
+    userClass: 'defaultUser' | 'admin'
+    createdAtDate: string
+    lastLoginDate: string
+    preferredLanguage: LocaleKeys
+  }
+}
 
-export type Auth = {
-  auth: AuthData
-  user: User
+export type AuthContextValue = {
+  user: User | null
+  isAuthenticated: boolean
+  isRevalidatingUser: boolean
+  signIn: (data: SignIn) => Promise<void>
+  signOut: () => void
 }

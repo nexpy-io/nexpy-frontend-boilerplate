@@ -24,9 +24,7 @@ describe('[ENVS]', () => {
       process.env.NEXT_PUBLIC_API_URL = 'protocol://url_api'
       process.env.NEXT_PUBLIC_SENTRY_DSN = 'protocol://url_sentry_dsn'
 
-      expect(getPublicEnvironmentConfig().NEXT_PUBLIC_API_URL).toBe(
-        'protocol://url_api'
-      )
+      expect(getPublicEnvironmentConfig().NEXT_PUBLIC_API_URL).toBe('protocol://url_api')
       expect(getPublicEnvironmentConfig().NEXT_PUBLIC_SENTRY_DSN).toBe(
         'protocol://url_sentry_dsn'
       )
@@ -51,8 +49,7 @@ describe('[ENVS]', () => {
   )
 
   test(
-    "Test if 'isProductionMode' method returns 'false'" +
-      "by 'yarn test' command.",
+    "Test if 'isProductionMode' method returns 'false'" + "by 'yarn test' command.",
     () => {
       expect(isProductionMode()).toBe(false)
     }

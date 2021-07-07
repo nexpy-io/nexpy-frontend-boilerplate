@@ -1,6 +1,6 @@
 import { getDefaultStaticProps } from 'utils/defaultServerSideProps'
 
-describe('[ENVS]', () => {
+describe('[NEXT_RESERVED_FUNCTIONS_HELPERS]', () => {
   test(
     "Test if 'getNodeEnv' method returns NODE_ENV with" +
       " 'test' value running by 'yarn test' command.",

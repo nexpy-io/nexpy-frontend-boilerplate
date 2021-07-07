@@ -22,6 +22,4 @@ export const validEnvNameOrProduction = (envName: string) => {
 }
 
 export const isProductionMode = (): boolean =>
-  PRODUCTION_ENVIRONMENT_NAMES.includes(
-    validEnvNameOrProduction(process.env.NODE_ENV)
-  )
+  PRODUCTION_ENVIRONMENT_NAMES.includes(validEnvNameOrProduction(process.env.NODE_ENV))

@@ -7,7 +7,7 @@ const useCurrentLocale = () => {
 
   if (context === undefined) {
     throw new Error(
-      'useCurrentLocale must be used within an LocaleProvider from contexts.'
+      'useCurrentLocale must be used within a LocaleProvider from contexts.'
     )
   }
 

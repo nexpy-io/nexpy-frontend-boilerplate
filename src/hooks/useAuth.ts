@@ -1,18 +1,15 @@
-import { useContextSelector } from 'use-context-selector'
+import { useContext } from 'react'
 
 import { AuthContext } from 'contexts/AuthContext'
 
 const useAuth = () => {
-  const auth = useContextSelector(AuthContext, authData => authData.auth)
-  const user = useContextSelector(AuthContext, authData => authData.user)
+  const contextValue = useContext(AuthContext)
 
-  if ([auth, user].some(contextData => contextData === undefined)) {
-    throw new Error(
-      'useAuth must be used within an AuthProvider from contexts.'
-    )
+  if (contextValue === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider from contexts.')
   }
 
-  return { auth, user }
+  return contextValue
 }
 
 export default useAuth

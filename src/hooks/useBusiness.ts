@@ -7,7 +7,7 @@ const useBusiness = () => {
 
   if (context === undefined) {
     throw new Error(
-      'useBusiness must be used within an BusinessInfoProvider from contexts.'
+      'useBusiness must be used within a BusinessInfoProvider from contexts.'
     )
   }
 
