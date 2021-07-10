@@ -3,7 +3,7 @@ import { AppProps as NextAppProps } from 'next/app'
 
 import { Preflight } from '@xstyled/styled-components'
 
-import { Head } from 'components'
+import { Head } from 'components/common'
 
 import AppProvider from 'contexts/AppProvider'
 import { initSentry } from 'utils/sentry'
