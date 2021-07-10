@@ -3,8 +3,8 @@ import { GetServerSideProps } from 'next'
 import { Dashboard } from 'views'
 
 import PageProvider from 'contexts/PageProvider'
+import { withAuth } from 'utils/auth'
 import { getDefaultServerSideProps } from 'utils/defaultServerSidePropGetters'
-import { getAuthTokenOrUndefined } from 'utils/sessions'
 
 import { PageProps } from 'types/pageProps'
 
@@ -15,22 +15,11 @@ const Page = ({ currentLocale, ...props }: PageProps) => (
 )
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const token = getAuthTokenOrUndefined(context)
-
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    }
-  }
-
-  return {
+  return withAuth(context, {
     props: {
       ...getDefaultServerSideProps(context),
     },
-  }
+  })
 }
 
 export default Page

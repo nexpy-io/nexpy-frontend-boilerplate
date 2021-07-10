@@ -13,8 +13,8 @@ const nextConfig = {
   pageExtensions: ['tsx', 'mdx'],
   include: [path.resolve(__dirname, 'src/assets/svg')],
   i18n: {
-    locales: ['en-US', 'pt-BR'],
-    defaultLocale: 'pt-BR',
+    locales: ['en', 'pt'],
+    defaultLocale: 'pt',
   },
 }
 

@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios'
+
 import { User, SignIn } from 'types/auth'
 
 const delayPromise = (amount = 750) => new Promise(resolve => setTimeout(resolve, amount))
@@ -21,7 +23,7 @@ const userMock: User = {
     userClass: 'admin',
     createdAtDate: '2021-05-23',
     lastLoginDate: '2021-06-27',
-    preferredLanguage: 'pt-BR',
+    preferredLanguage: 'pt',
   },
 }
 
@@ -31,11 +33,18 @@ const RESOLVE_ALL = true
 export const signInMockRequest = async (data: SignIn) => {
   await delayPromise()
 
-  return new Promise<User>((resolve, reject) => {
+  return new Promise<AxiosResponse<User>>((resolve, reject) => {
     if (RESOLVE_ALL) {
-      resolve(userMock)
+      resolve({
+        data: userMock,
+        status: 200,
+        statusText: 'OK',
+        headers: '',
+        config: {},
+        request: '',
+      })
     } else {
-      reject()
+      reject(new Error('Invalid user.'))
     }
   })
 }
@@ -47,11 +56,18 @@ export const recoverUserInfoMockRequest = async (token: string) => {
     throw new Error('Invalid Token.')
   }
 
-  return new Promise<User>((resolve, reject) => {
+  return new Promise<AxiosResponse<User>>((resolve, reject) => {
     if (RESOLVE_ALL) {
-      resolve(userMock)
+      resolve({
+        data: userMock,
+        status: 200,
+        statusText: 'OK',
+        headers: '',
+        config: {},
+        request: '',
+      })
     } else {
-      reject()
+      reject(new Error('Invalid user.'))
     }
   })
 }

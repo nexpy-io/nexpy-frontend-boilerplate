@@ -1,3 +1,5 @@
+import { Redirect } from 'next'
+
 import { LocaleKeys } from 'types/locales'
 
 export type SignIn = {
@@ -35,3 +37,8 @@ export type AuthContextValue = {
   signIn: (data: SignIn) => Promise<void>
   signOut: () => void
 }
+
+export type WithAuthReturn =
+  | { props: { [key: string]: unknown } }
+  | { redirect: Redirect }
+  | { notFound: true }

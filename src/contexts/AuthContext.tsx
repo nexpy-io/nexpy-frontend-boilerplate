@@ -1,6 +1,11 @@
+import { useRouter } from 'next/router'
 import { createContext, useState, useEffect, ReactNode } from 'react'
 
+import useSWR from 'swr'
+
+import { DEFAULT_LOGIN_PAGE_REDIRECT_PATH } from 'constants/auth'
 import { nexpyClientSideApi } from 'providers'
+import { signInService, revalidateUserService } from 'services/auth'
 import {
   clearCurrentSessionCookie,
   getAuthTokenOrUndefined,
@@ -8,8 +13,6 @@ import {
 } from 'utils/sessions'
 
 import { User, AuthContextValue, SignIn } from 'types/auth'
-
-import { recoverUserInfoMockRequest, signInMockRequest } from 'mocks/services'
 
 type AuthProviderProps = {
   children: ReactNode
@@ -19,9 +22,30 @@ export const AuthContext = createContext({} as AuthContextValue)
 
 export const AuthProvider = ({ children, ...props }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null)
-  const [isRevalidatingUser, setIsRevalidatingUser] = useState<boolean>(true)
+
+  const unobfuscatedToken = getAuthTokenOrUndefined()
 
   const isAuthenticated = !!user
+
+  const {
+    data: revalidatedUserData,
+    error: userRevalidationError,
+    isValidating,
+  } = useSWR(
+    () =>
+      `swr/user/revalidation|Token<${
+        unobfuscatedToken || user?.auth.token || 'unknown'
+      }>`,
+    () => {
+      if (unobfuscatedToken) {
+        return revalidateUserService(unobfuscatedToken)
+      }
+
+      return undefined
+    }
+  )
+
+  const router = useRouter()
 
   const registerSession = (userData: User) => {
     const currentToken = userData.auth.token
@@ -33,7 +57,7 @@ export const AuthProvider = ({ children, ...props }: AuthProviderProps) => {
   }
 
   const signIn = async ({ email, password }: SignIn) => {
-    const userData = await signInMockRequest({
+    const { data: userData } = await signInService({
       email,
       password,
     })
@@ -43,37 +67,37 @@ export const AuthProvider = ({ children, ...props }: AuthProviderProps) => {
     }
   }
 
-  const signOut = () => {
-    clearCurrentSessionCookie()
-    setUser(null)
+  const signOut = (redirectPath?: string) => {
+    if (unobfuscatedToken) {
+      clearCurrentSessionCookie()
+    }
+
+    if (user) {
+      setUser(null)
+    }
+
+    if (router.pathname !== DEFAULT_LOGIN_PAGE_REDIRECT_PATH) {
+      router.push(redirectPath || DEFAULT_LOGIN_PAGE_REDIRECT_PATH)
+    }
   }
 
   useEffect(() => {
-    const unobfuscatedToken = getAuthTokenOrUndefined()
-
-    const fetchUser = async () => {
-      try {
-        if (unobfuscatedToken) {
-          const responseUserData = await recoverUserInfoMockRequest(unobfuscatedToken)
-
-          registerSession(responseUserData)
-        }
-      } catch {
-        signOut()
-      } finally {
-        setIsRevalidatingUser(false)
-      }
+    if (userRevalidationError) {
+      signOut()
+      return
     }
 
-    fetchUser()
-  }, [])
+    if (revalidatedUserData) {
+      setUser(revalidatedUserData.data)
+    }
+  }, [revalidatedUserData, userRevalidationError])
 
   return (
     <AuthContext.Provider
       value={{
         user,
         isAuthenticated,
-        isRevalidatingUser,
+        isRevalidatingUser: isValidating,
         signIn,
         signOut,
       }}

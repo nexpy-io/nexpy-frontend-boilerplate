@@ -102,10 +102,10 @@ module.exports = {
   settings: {
     'import/resolver': {
       'babel-module': {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
       },
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
         paths: ['src'],
       },
     },
