@@ -7,3 +7,5 @@ echo "Running eslint checks..."
 yarn --silent eslint:check
 echo "Running stylelint checks..."
 yarn --silent stylelint:check
+echo "Running type checks..."
+yarn --silent type-check
