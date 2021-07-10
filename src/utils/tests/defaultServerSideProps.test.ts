@@ -7,29 +7,29 @@ describe('[NEXT_RESERVED_FUNCTIONS_HELPERS]', () => {
     () => {
       expect(
         getDefaultStaticProps({
-          locale: 'pt-BR',
-          defaultLocale: 'pt-BR',
+          locale: 'pt',
+          defaultLocale: 'pt',
         })
       ).toStrictEqual({
-        currentLocale: 'pt-BR',
+        currentLocale: 'pt',
       })
 
       expect(
         getDefaultStaticProps({
-          locale: 'en-US',
-          defaultLocale: 'pt-BR',
+          locale: 'en',
+          defaultLocale: 'pt',
         })
       ).toStrictEqual({
-        currentLocale: 'en-US',
+        currentLocale: 'en',
       })
 
       expect(
         getDefaultStaticProps({
           locale: undefined,
-          defaultLocale: 'pt-BR',
+          defaultLocale: 'pt',
         })
       ).toStrictEqual({
-        currentLocale: 'pt-BR',
+        currentLocale: 'pt',
       })
 
       expect(
@@ -38,7 +38,7 @@ describe('[NEXT_RESERVED_FUNCTIONS_HELPERS]', () => {
           defaultLocale: undefined,
         })
       ).toStrictEqual({
-        currentLocale: 'pt-BR',
+        currentLocale: 'pt',
       })
     }
   )
