@@ -3,15 +3,15 @@ import { useContext } from 'react'
 import { BusinessInfoContext } from 'contexts/BusinessInfoContext'
 
 const useBusiness = () => {
-  const context = useContext(BusinessInfoContext)
+  const contextValue = useContext(BusinessInfoContext)
 
-  if (context === undefined) {
+  if (contextValue === undefined) {
     throw new Error(
       'useBusiness must be used within a BusinessInfoProvider from contexts.'
     )
   }
 
-  return context
+  return contextValue
 }
 
 export default useBusiness

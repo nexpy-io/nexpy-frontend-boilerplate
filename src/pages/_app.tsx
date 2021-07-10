@@ -2,14 +2,17 @@
 import { AppProps as NextAppProps } from 'next/app'
 
 import { Preflight } from '@xstyled/styled-components'
-import 'trackers/wdyr'
 
 import { Head } from 'components'
 
-import 'sanitize.css'
-
 import AppProvider from 'contexts/AppProvider'
 import { initSentry } from 'utils/sentry'
+
+import 'trackers/wdyr'
+
+import 'sanitize.css'
+import 'sanitize.css/forms.css'
+import 'sanitize.css/typography.css'
 
 initSentry()
 interface AppProps extends NextAppProps {

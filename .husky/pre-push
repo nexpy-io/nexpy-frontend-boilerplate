@@ -5,3 +5,5 @@ echo "Running pre-push checks..."
 yarn --silent prettier:check
 echo "Running eslint checks..."
 yarn --silent eslint:check
+echo "Running stylelint checks..."
+yarn --silent stylelint:check

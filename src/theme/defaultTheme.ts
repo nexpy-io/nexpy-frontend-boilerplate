@@ -1,3 +1,6 @@
+import { defaultTheme as xStyledDefaultTheme } from '@xstyled/styled-components'
+import merge from 'lodash/merge'
+
 import { Theme } from 'types/theme'
 
 const defaultTheme: Theme = {
@@ -7,4 +10,4 @@ const defaultTheme: Theme = {
   },
 }
 
-export default defaultTheme
+export default merge({}, xStyledDefaultTheme, defaultTheme)

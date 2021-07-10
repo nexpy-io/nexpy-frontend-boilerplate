@@ -1,4 +1,10 @@
 {
-  "*.{ts,js,tsx,jsx}": ["yarn --silent prettier", "yarn --silent eslint"],
-  "*.{css,md,mdx,json}}": ["yarn --silent prettier"]
+  "*.{ts,js,tsx,jsx}": [
+    "yarn --silent prettier",
+    "yarn --silent eslint",
+    "yarn --silent stylelint:check"
+  ],
+  "*.{css,md,mdx,json}}": [
+    "yarn --silent prettier"
+  ]
 }

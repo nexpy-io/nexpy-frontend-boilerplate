@@ -1,12 +1,12 @@
 const productionPlugins = [['transform-remove-console', { exclude: ['error', 'warn'] }]]
 
 const commonPlugins = [
+  ['@hookydev/babel-plugin-styled-components', { ssr: true }],
   '@babel/plugin-proposal-optional-chaining',
   '@babel/plugin-proposal-do-expressions',
   '@babel/plugin-proposal-throw-expressions',
   '@babel/plugin-proposal-nullish-coalescing-operator',
   ['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],
-  ['@hookydev/babel-plugin-styled-components', { ssr: true }],
   ['module-resolver', { root: ['./src'] }],
 ]
 
