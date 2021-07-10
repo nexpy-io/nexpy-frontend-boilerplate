@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  test:
     working_directory: ~/repo
     docker:
       - image: cimg/node:16.4.0
@@ -16,8 +16,23 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Type Check
+          command: yarn type-check
+      - run:
+          name: Verify Code Style
+          command: yarn prettier:check
+      - run:
+          name: Verify Code Quality and Integrity
+          command: yarn eslint:check
+      - run:
+          name: Verify Stylesheets Quality and Integrity
+          command: yarn stylelint:check
+      - run:
           name: Test Next build
           command: yarn build
+      - run:
+          name: Test Storybook build
+          command: yarn build-storybook
       - run:
           name: Run tests
           command: yarn test
