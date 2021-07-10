@@ -1,4 +1,4 @@
-import { getDefaultStaticProps } from 'utils/defaultServerSideProps'
+import { getDefaultStaticProps } from 'utils/defaultServerSidePropGetters'
 
 describe('[NEXT_RESERVED_FUNCTIONS_HELPERS]', () => {
   test(

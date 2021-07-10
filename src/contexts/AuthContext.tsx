@@ -1,8 +1,9 @@
 import { createContext, useState, useEffect, ReactNode } from 'react'
 
+import { nexpyClientSideApi } from 'providers'
 import {
   clearCurrentSessionCookie,
-  getSavedAuthTokenOrUndefined,
+  getAuthTokenOrUndefined,
   writeSessionCookie,
 } from 'utils/sessions'
 
@@ -23,7 +24,11 @@ export const AuthProvider = ({ children, ...props }: AuthProviderProps) => {
   const isAuthenticated = !!user
 
   const registerSession = (userData: User) => {
-    writeSessionCookie(userData.auth.token)
+    const currentToken = userData.auth.token
+
+    nexpyClientSideApi.defaults.headers.Authorization = `Bearer ${currentToken}`
+
+    writeSessionCookie(currentToken)
     setUser(userData)
   }
 
@@ -44,7 +49,7 @@ export const AuthProvider = ({ children, ...props }: AuthProviderProps) => {
   }
 
   useEffect(() => {
-    const unobfuscatedToken = getSavedAuthTokenOrUndefined()
+    const unobfuscatedToken = getAuthTokenOrUndefined()
 
     const fetchUser = async () => {
       try {

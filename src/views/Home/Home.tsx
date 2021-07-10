@@ -1,3 +1,3 @@
-const Home = () => <p>oi</p>
+const Home = () => <p>Home</p>
 
 export default Home

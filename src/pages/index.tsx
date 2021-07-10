@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import { Home } from 'views'
 
 import PageProvider from 'contexts/PageProvider'
-import { getDefaultStaticProps } from 'utils/defaultServerSideProps'
+import { getDefaultStaticProps } from 'utils/defaultServerSidePropGetters'
 
 import { PageProps } from 'types/pageProps'
 
