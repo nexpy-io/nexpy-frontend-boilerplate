@@ -16,5 +16,8 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Test Next build
+          command: yarn build
+      - run:
           name: Run tests
           command: yarn test
