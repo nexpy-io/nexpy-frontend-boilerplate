@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  build_and_test:
     working_directory: ~/repo
     docker:
       - image: cimg/node:16.4.0
