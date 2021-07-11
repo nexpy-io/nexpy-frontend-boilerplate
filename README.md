@@ -10,7 +10,7 @@
 
 **Documentation is under construction and may not be fully available.**
 
-A components documentation is available [here](http://nexpy-frontend-boilerplate-storybook.nexpy.com.br/).
+A components documentation is available [here](https://nexpy-frontend-boilerplate-storybook.nexpy.com.br/).
 
 ## Installation
 
