@@ -1,8 +1,14 @@
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
 <p align="center">
   <a href="https://front-boilerplate.nexpy.com.br/">
     <img src="https://user-images.githubusercontent.com/41436010/125207308-fbd9eb80-e261-11eb-98e4-7ae01ad1f143.png" width="600">
   </a>
 </p>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
 # nexpy-frontend-boilerplate
 
