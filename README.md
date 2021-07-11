@@ -1,4 +1,10 @@
-# frontend-boilerplate
+<p align="center">
+  <a href="https://front-boilerplate.nexpy.com.br/">
+    <img src="https://user-images.githubusercontent.com/41436010/125207308-fbd9eb80-e261-11eb-98e4-7ae01ad1f143.png" width="600">
+  </a>
+</p>
+
+# nexpy-frontend-boilerplate
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8858be17-4783-478e-b134-d8eb820b6d75/deploy-status)](https://app.netlify.com/sites/nexpy-frontend-boilerplate-storybook/deploys)
 ![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=nexpy-frontend-boilerplate)
@@ -6,7 +12,7 @@
 [![All Contributors](https://img.shields.io/github/all-contributors/AllanOliveiraM/nexpy-frontend-boilerplate/main)](#contributors-)
 [![Nexpy](https://circleci.com/gh/AllanOliveiraM/nexpy-frontend-boilerplate.svg?style=svg)](https://app.circleci.com/pipelines/github/AllanOliveiraM/nexpy-frontend-boilerplate)
 
-[frontend-boilerplate](https://github.com/nexpy-io/nexpy-frontend-boilerplate) is an Nexpy.io open source template repository for front end development based on [Next.js](https://github.com/vercel/next.js) and [TypeScript](https://github.com/microsoft/TypeScript).
+[nexpy-frontend-boilerplate](https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate) is an Nexpy.io open source template repository for front end development based on [Next.js](https://github.com/vercel/next.js) and [TypeScript](https://github.com/microsoft/TypeScript).
 
 ## More Docs
 
