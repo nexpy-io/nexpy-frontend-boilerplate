@@ -81,7 +81,7 @@ Thanks goes to these wonderful people:
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/camilaffonseca"><img src="https://avatars.githubusercontent.com/u/54648900?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Camila Fonseca</b></sub></a><br /><a href="https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate/commits?author=camilaffonseca" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/camilaffonseca"><img src="https://avatars.githubusercontent.com/u/54648900?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Camila Fonseca</b></sub></a><br /><a href="https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate/commits?author=camilaffonseca" title="Code">💻</a> <a href="#ideas-camilaffonseca" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/AllanOliveiraM"><img src="https://avatars.githubusercontent.com/u/41436010?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Allan Oliveira Miraballes</b></sub></a><br /><a href="https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate/commits?author=AllanOliveiraM" title="Code">💻</a> <a href="https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate/commits?author=AllanOliveiraM" title="Documentation">📖</a> <a href="#ideas-AllanOliveiraM" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-AllanOliveiraM" title="Maintenance">🚧</a> <a href="#projectManagement-AllanOliveiraM" title="Project Management">📆</a></td>
   </tr>
 </table>
