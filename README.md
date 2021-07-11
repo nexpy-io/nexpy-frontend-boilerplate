@@ -8,6 +8,8 @@
 
 ## More Docs
 
+**Documentation is under construction and may not be fully available.**
+
 A components documentation is available running storybook command below.
 
 ## Installation
