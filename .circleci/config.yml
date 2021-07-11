@@ -16,10 +16,10 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: Test Next build
+          name: Test Next Build
           command: yarn build
       - run:
-          name: Test Storybook build
+          name: Test Storybook Build
           command: yarn build-storybook
 
   code_quality_and_integrity:
