@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/github/license/nexpy-io/frontend-boilerplate?style=flat)](https://github.com/nexpy-io/frontend-boilerplate/blob/main/LICENSE)
 [![All Contributors](https://img.shields.io/github/all-contributors/nexpy-io/frontend-boilerplate/main)](#contributors-)
-[![<ORG_NAME>](https://circleci.com/gh/nexpy-io/nexpy-frontend-boilerplate.svg?style=svg)](https://app.circleci.com/pipelines/github/nexpy-io/nexpy-frontend-boilerplate)
+[![Nexpy](https://circleci.com/gh/nexpy-io/nexpy-frontend-boilerplate.svg?style=svg)](https://app.circleci.com/pipelines/github/AllanOliveiraM/nexpy-frontend-boilerplate)
 
 [frontend-boilerplate](https://github.com/nexpy-io/nexpy-frontend-boilerplate) is an Nexpy.io open source template repository for front end development based on [Next.js](https://github.com/vercel/next.js) and [TypeScript](https://github.com/microsoft/TypeScript).
 
