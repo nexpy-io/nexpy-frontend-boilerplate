@@ -20,13 +20,17 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/41436010?v=4",
       "profile": "https://github.com/AllanOliveiraM",
       "contributions": [
-        "code"
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "projectManagement"
       ]
     }
   ],
   "contributorsPerLine": 7,
-  "projectName": "frontend-boilerplate",
-  "projectOwner": "nexpy-io",
+  "projectName": "nexpy-frontend-boilerplate",
+  "projectOwner": "AllanOliveiraM",
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true
