@@ -39,12 +39,12 @@ const Home = () => {
             <p>{t('home.use')}</p>
             <div>
               <Link href='https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate'>
-                <a target='_blank'>
+                <a target='_blank' rel='noreferrer'>
                   <Image src={GithubLogo} alt='Github Logo' />
                 </a>
               </Link>
               <Link href='https://github.com/nexpy-io'>
-                <a target='_blank'>
+                <a target='_blank' rel='noreferrer'>
                   <Image src={NexpyLogo} alt='Nexpy Logo' />
                 </a>
               </Link>
