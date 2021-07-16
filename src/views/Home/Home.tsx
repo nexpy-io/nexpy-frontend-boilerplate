@@ -40,12 +40,12 @@ const Home = () => {
             <div>
               <Link href='https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate'>
                 <a target='_blank' rel='noreferrer'>
-                  <Image src={GithubLogo} alt='Github Logo' />
+                  <Image width={24} height={24} src={GithubLogo} alt='Github Logo' />
                 </a>
               </Link>
               <Link href='https://github.com/nexpy-io'>
                 <a target='_blank' rel='noreferrer'>
-                  <Image src={NexpyLogo} alt='Nexpy Logo' />
+                  <Image width={31} height={24} src={NexpyLogo} alt='Nexpy Logo' />
                 </a>
               </Link>
             </div>
