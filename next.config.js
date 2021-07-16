@@ -11,7 +11,7 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   pageExtensions: ['tsx', 'mdx'],
-  include: [path.resolve(__dirname, 'src/assets/svg')],
+  include: [path.resolve(__dirname, 'src/assets')],
   i18n: {
     locales: ['en', 'pt'],
     defaultLocale: 'pt',

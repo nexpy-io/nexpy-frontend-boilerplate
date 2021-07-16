@@ -82,7 +82,6 @@ A server with a fast refresh for documentation development. Do not use for produ
 
 See what we are preparing for the future:
 
-- Create standard production home page for boilerplate;
 - Theme configs;
 - Create a design system components with docs;
 - Auth;
