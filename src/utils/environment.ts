@@ -4,10 +4,8 @@ import {
   DEFAULT_PRODUCTION_ENVIRONMENT_NAME,
 } from 'constants/environment'
 
-export const getPublicEnvironmentConfig = () => ({
-  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
-  NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
-})
+export const { NEXT_PUBLIC_API_URL } = process.env
+export const { NEXT_PUBLIC_SENTRY_DSN } = process.env
 
 export const getNodeEnv = () => ({
   NODE_ENV: process.env.NODE_ENV,

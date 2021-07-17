@@ -6,9 +6,7 @@ import {
   Exception,
 } from '@sentry/nextjs'
 
-import { getPublicEnvironmentConfig, isProductionMode } from 'utils/environment'
-
-const { NEXT_PUBLIC_SENTRY_DSN } = getPublicEnvironmentConfig()
+import { NEXT_PUBLIC_SENTRY_DSN, isProductionMode } from 'utils/environment'
 
 export const initSentry = () => {
   if (!isProductionMode()) {
