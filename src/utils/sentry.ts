@@ -1,5 +1,10 @@
-import * as SentryEngine from '@sentry/react'
-import { Integrations } from '@sentry/tracing'
+/* eslint-disable no-console */
+import {
+  init,
+  captureException as sentryCaptureException,
+  flush,
+  Exception,
+} from '@sentry/nextjs'
 
 import { getPublicEnvironmentConfig, isProductionMode } from 'utils/environment'
 
@@ -7,14 +12,12 @@ const { NEXT_PUBLIC_SENTRY_DSN } = getPublicEnvironmentConfig()
 
 export const initSentry = () => {
   if (!isProductionMode()) {
-    // eslint-disable-next-line no-console
     console.debug('[MONITORING] Sentry skipped.')
 
     return
   }
 
   if (!NEXT_PUBLIC_SENTRY_DSN) {
-    // eslint-disable-next-line no-console
     console.error(
       '[MONITORING] Sentry not loaded. A valid DSN config could not be found.'
     )
@@ -23,31 +26,33 @@ export const initSentry = () => {
   }
 
   try {
-    SentryEngine.init({
+    init({
       enabled: isProductionMode(),
-      integrations: [new Integrations.BrowserTracing()],
       dsn: NEXT_PUBLIC_SENTRY_DSN,
     })
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error(
-      '[MONITORING] Sentry not loaded. An error was encountered when starting Sentry.'
+      '[MONITORING] Sentry not loaded. An error was encountered when starting Sentry.',
+      error
     )
   }
 }
 
-export const captureException = async (error: Error) => {
+export const captureException = async (error: Error | Exception) => {
   if (isProductionMode()) {
     try {
-      SentryEngine.captureException(error)
+      sentryCaptureException(error)
 
-      const success = await SentryEngine.flush(5000)
+      const success = await flush(5000)
 
       if (!success) {
-        throw new Error()
+        throw new Error(
+          `Flush pass: false. It may not have been possible to send exception data to Nexpy servers. Please report this bug! ${String(
+            error
+          )}`
+        )
       }
 
-      // eslint-disable-next-line no-console
       console.error(
         `Flush pass: ${success}`,
         'This exception was caught automatically and will be debugged.',
@@ -55,16 +60,12 @@ export const captureException = async (error: Error) => {
         error
       )
     } catch {
-      // eslint-disable-next-line no-console
       console.error(
-        '[MONITORING] It was not possible to send exception data for Nexpy servers. Please report this bug!',
+        '[MONITORING] It was not possible to send exception data for Nexpy servers. Please report this bug! ',
         error
       )
     }
   } else {
-    // eslint-disable-next-line no-console
-    console.error('[TRACKED_ERROR] ', error)
+    console.error('[DEV_ERROR] ', error)
   }
 }
-
-export default SentryEngine

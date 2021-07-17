@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AppProps as NextAppProps } from 'next/app'
 
 import { Preflight } from '@xstyled/styled-components'
@@ -16,7 +15,7 @@ import 'sanitize.css/typography.css'
 
 initSentry()
 interface AppProps extends NextAppProps {
-  err: any
+  err: unknown
 }
 
 // Workaround for https://github.com/vercel/next.js/issues/8592
