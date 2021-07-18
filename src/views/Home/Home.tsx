@@ -3,10 +3,6 @@ import Link from 'next/link'
 
 import { useTranslate } from 'hooks'
 
-import GithubLogo from 'assets/images/logos/GitHub-Mark-120px-plus.png'
-import NexpyLogo from 'assets/images/logos/nexpy-logo-square.png'
-import World from 'assets/svg/world.svg'
-
 import styles from './Home.module.scss'
 
 const Home = () => {
@@ -18,14 +14,24 @@ const Home = () => {
         {currentLocale === 'pt' ? (
           <Link href='/' locale='en'>
             <a>
-              <World />
+              <Image
+                width={24}
+                height={24}
+                src='/images/svg/world.svg'
+                alt='Github Logo'
+              />
               <p>en</p>
             </a>
           </Link>
         ) : (
           <Link href='/' locale='pt'>
             <a>
-              <World />
+              <Image
+                width={24}
+                height={24}
+                src='/images/svg/world.svg'
+                alt='Github Logo'
+              />
               <p>pt</p>
             </a>
           </Link>
@@ -40,12 +46,22 @@ const Home = () => {
             <div>
               <Link href='https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate'>
                 <a target='_blank' rel='noreferrer'>
-                  <Image width={24} height={24} src={GithubLogo} alt='Github Logo' />
+                  <Image
+                    width={24}
+                    height={24}
+                    src='/images/logos/GitHub-Mark-120px-plus.png'
+                    alt='Github Logo'
+                  />
                 </a>
               </Link>
               <Link href='https://github.com/nexpy-io'>
                 <a target='_blank' rel='noreferrer'>
-                  <Image width={31} height={24} src={NexpyLogo} alt='Nexpy Logo' />
+                  <Image
+                    width={31}
+                    height={24}
+                    src='/images/logos/nexpy-logo-square.png'
+                    alt='Nexpy Logo'
+                  />
                 </a>
               </Link>
             </div>
