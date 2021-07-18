@@ -5,8 +5,12 @@ import { Theme } from 'types/theme'
 
 const defaultTheme: Theme = {
   colors: {
-    primary: '#f2f',
-    secondary: '#ca2',
+    black: '#28262C',
+    white: '#F9F5FF',
+
+    primary: '#9855FF',
+    secondary: '#5C50FF',
+    tertiary: '#4AC8FF',
   },
 }
 

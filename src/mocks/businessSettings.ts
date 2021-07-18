@@ -3,11 +3,18 @@ import { BusinessSettings } from 'types/businessSettings'
 const businessSettings: BusinessSettings = {
   theme: {
     colors: {
-      primary: '#f2f',
-      secondary: '#ab2',
+      black: '#28262C',
+      white: '#F9F5FF',
+
+      primary: '#7B1477',
+      secondary: '#9A0C9D',
+      tertiary: '##d6bf3a',
     },
   },
   businessInfo: {
+    core: {
+      useDefaultLoader: false,
+    },
     businessData: {
       businessName: 'Jaqueline Furtado',
     },
