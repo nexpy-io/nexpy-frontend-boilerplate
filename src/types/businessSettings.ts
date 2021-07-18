@@ -1,6 +1,9 @@
 import { Theme } from 'types/theme'
 
 export type BusinessInfo = {
+  core: {
+    useDefaultLoader: boolean
+  }
   businessData: {
     businessName: string
   }
