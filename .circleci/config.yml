@@ -20,7 +20,7 @@ jobs:
           command: yarn build
       - run:
           name: Test Storybook Build
-          command: yarn build-storybook
+          command: yarn build:storybook
 
   code_quality_and_integrity:
     working_directory: ~/repo
