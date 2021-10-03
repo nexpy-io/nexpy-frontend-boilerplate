@@ -8,8 +8,8 @@ import { getDefaultStaticProps } from 'utils/defaultServerSidePropGetters'
 import { PageProps } from 'types/pageProps'
 
 const Page = ({ currentLocale, ...props }: PageProps) => (
-  <PageProvider currentLocale={currentLocale} {...props}>
-    <Home />
+  <PageProvider currentLocale={currentLocale}>
+    <Home {...props} />
   </PageProvider>
 )
 

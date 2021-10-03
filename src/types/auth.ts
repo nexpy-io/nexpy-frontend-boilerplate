@@ -2,9 +2,12 @@ import { Redirect } from 'next'
 
 import { LocaleKeys } from 'types/locales'
 
+type Email = string
+type Password = string
+
 export type SignIn = {
-  email: string
-  password: string
+  email: Email
+  password: Password
 }
 
 export type User = {
@@ -16,7 +19,7 @@ export type User = {
     firstName: string
     lastName: string
     fullName: string
-    email: string
+    email: Email
     avatarUrl: string
     birthDate: string
     phoneNumber: string

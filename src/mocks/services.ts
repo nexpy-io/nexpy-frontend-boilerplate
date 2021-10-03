@@ -39,7 +39,7 @@ export const signInMockRequest = async (data: SignIn) => {
         data: userMock,
         status: 200,
         statusText: 'OK',
-        headers: '',
+        headers: {},
         config: {},
         request: '',
       })
@@ -62,7 +62,7 @@ export const recoverUserInfoMockRequest = async (token: string) => {
         data: userMock,
         status: 200,
         statusText: 'OK',
-        headers: '',
+        headers: {},
         config: {},
         request: '',
       })

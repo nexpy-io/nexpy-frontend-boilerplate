@@ -1,4 +1,4 @@
-import getNexpyServerSideApi from 'providers/nexpyProviders/getNexpyServerSideApi'
-import nexpyClientSideApi from 'providers/nexpyProviders/nexpyClientSideApi'
+import getNexpyServerSideClient from 'providers/nexpyProviders/getNexpyServerSideClient'
+import nexpyClientSideClient from 'providers/nexpyProviders/nexpyClientSideClient'
 
-export { nexpyClientSideApi, getNexpyServerSideApi }
+export { nexpyClientSideClient, getNexpyServerSideClient }

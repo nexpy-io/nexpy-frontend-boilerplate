@@ -14,7 +14,7 @@ const getHTTPClient = (nextContext?: NookiesNextContext) => {
 
   const currentToken = getAuthTokenOrUndefined(nextContext)
 
-  if (currentToken) {
+  if (currentToken && httpClient.defaults.headers) {
     httpClient.defaults.headers.Authorization = `Bearer ${currentToken}`
   }
 

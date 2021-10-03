@@ -9,8 +9,8 @@ import { getDefaultServerSideProps } from 'utils/defaultServerSidePropGetters'
 import { PageProps } from 'types/pageProps'
 
 const Page = ({ currentLocale, ...props }: PageProps) => (
-  <PageProvider currentLocale={currentLocale} {...props}>
-    <Dashboard />
+  <PageProvider currentLocale={currentLocale}>
+    <Dashboard {...props} />
   </PageProvider>
 )
 
