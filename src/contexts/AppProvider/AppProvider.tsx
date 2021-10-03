@@ -6,8 +6,8 @@ type AppProviderProps = {
   children: ReactNode
 }
 
-const AppProvider = ({ children, ...props }: AppProviderProps) => (
-  <AuthProvider {...props}>{children}</AuthProvider>
+const AppProvider = ({ children }: AppProviderProps) => (
+  <AuthProvider>{children}</AuthProvider>
 )
 
 export default AppProvider

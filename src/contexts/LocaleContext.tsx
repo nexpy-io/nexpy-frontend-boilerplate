@@ -9,8 +9,6 @@ type LocaleProviderProps = {
 
 export const LocaleContext = createContext('pt-BR' as LocaleKeys)
 
-export const LocaleProvider = ({ locale, children, ...props }: LocaleProviderProps) => (
-  <LocaleContext.Provider value={locale} {...props}>
-    {children}
-  </LocaleContext.Provider>
+export const LocaleProvider = ({ locale, children }: LocaleProviderProps) => (
+  <LocaleContext.Provider value={locale}>{children}</LocaleContext.Provider>
 )

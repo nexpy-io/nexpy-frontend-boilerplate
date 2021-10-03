@@ -12,9 +12,8 @@ export const BusinessInfoContext = createContext({} as BusinessInfo)
 export const BusinessInfoProvider = ({
   businessInfo,
   children,
-  ...props
 }: BusinessInfoProviderProps) => (
-  <BusinessInfoContext.Provider value={businessInfo} {...props}>
+  <BusinessInfoContext.Provider value={businessInfo}>
     {children}
   </BusinessInfoContext.Provider>
 )

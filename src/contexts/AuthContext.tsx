@@ -4,7 +4,7 @@ import { createContext, useState, useEffect, ReactNode } from 'react'
 import useSWR from 'swr'
 
 import { DEFAULT_LOGIN_PAGE_REDIRECT_PATH } from 'constants/auth'
-import { nexpyClientSideApi } from 'providers'
+import { nexpyClientSideClient } from 'providers'
 import { signInService, revalidateUserService } from 'services/auth'
 import {
   clearCurrentSessionCookie,
@@ -20,7 +20,7 @@ type AuthProviderProps = {
 
 export const AuthContext = createContext({} as AuthContextValue)
 
-export const AuthProvider = ({ children, ...props }: AuthProviderProps) => {
+export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null)
 
   const unobfuscatedToken = getAuthTokenOrUndefined()
@@ -50,8 +50,8 @@ export const AuthProvider = ({ children, ...props }: AuthProviderProps) => {
   const registerSession = (userData: User) => {
     const currentToken = userData.auth.token
 
-    if (nexpyClientSideApi.defaults.headers) {
-      nexpyClientSideApi.defaults.headers.Authorization = `Bearer ${currentToken}`
+    if (nexpyClientSideClient.defaults.headers) {
+      nexpyClientSideClient.defaults.headers.Authorization = `Bearer ${currentToken}`
     }
 
     writeSessionCookie(currentToken)
@@ -103,7 +103,6 @@ export const AuthProvider = ({ children, ...props }: AuthProviderProps) => {
         signIn,
         signOut,
       }}
-      {...props}
     >
       {children}
     </AuthContext.Provider>

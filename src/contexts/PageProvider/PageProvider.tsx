@@ -3,6 +3,8 @@ import { ReactNode } from 'react'
 import { ThemeProvider } from '@xstyled/styled-components'
 import merge from 'lodash/merge'
 
+import Compose from 'components/common/Compose'
+
 import { BusinessInfoProvider } from 'contexts/BusinessInfoContext'
 import { LocaleProvider } from 'contexts/LocaleContext'
 
@@ -10,7 +12,7 @@ import defaultBusinessInfo from 'settings/defaultBusinessInfo'
 
 import { BusinessInfo } from 'types/businessSettings'
 import { LocaleKeys } from 'types/locales'
-import { PageProps } from 'types/pageProps'
+import { PageProviderProps } from 'types/pageProps'
 import { Theme } from 'types/theme'
 
 import defaultTheme from 'theme/defaultTheme'
@@ -29,19 +31,34 @@ const DynamicPageProvider = ({
   theme,
   locale,
   businessInfo,
-  ...props
 }: DynamicPageProviderProps) => (
-  <BusinessInfoProvider
-    businessInfo={merge({}, defaultBusinessInfo, businessInfo)}
-    {...props}
+  <Compose
+    components={[
+      {
+        render: BusinessInfoProvider,
+        props: {
+          businessInfo: merge({}, defaultBusinessInfo, businessInfo),
+        },
+      },
+      {
+        render: LocaleProvider,
+        props: {
+          locale,
+        },
+      },
+      {
+        render: ThemeProvider,
+        props: {
+          theme: merge({}, defaultTheme, theme),
+        },
+      },
+    ]}
   >
-    <LocaleProvider locale={locale}>
-      <ThemeProvider theme={merge({}, defaultTheme, theme)}>{children}</ThemeProvider>
-    </LocaleProvider>
-  </BusinessInfoProvider>
+    {children}
+  </Compose>
 )
 
-const PageProviderWrapper = ({ children, currentLocale, ...props }: PageProps) => {
+const PageProviderWrapper = ({ children, currentLocale }: PageProviderProps) => {
   const businessSettings = userSettingsMock
 
   return (
@@ -49,7 +66,6 @@ const PageProviderWrapper = ({ children, currentLocale, ...props }: PageProps) =
       theme={businessSettings.theme}
       locale={currentLocale}
       businessInfo={businessSettings.businessInfo}
-      {...props}
     >
       {children}
     </DynamicPageProvider>
