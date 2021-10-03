@@ -50,7 +50,9 @@ export const AuthProvider = ({ children, ...props }: AuthProviderProps) => {
   const registerSession = (userData: User) => {
     const currentToken = userData.auth.token
 
-    nexpyClientSideApi.defaults.headers.Authorization = `Bearer ${currentToken}`
+    if (nexpyClientSideApi.defaults.headers) {
+      nexpyClientSideApi.defaults.headers.Authorization = `Bearer ${currentToken}`
+    }
 
     writeSessionCookie(currentToken)
     setUser(userData)
