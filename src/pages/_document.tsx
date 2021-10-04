@@ -1,22 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-import Document from 'next/document'
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: any) {
+  static async getInitialProps(context: DocumentContext) {
     const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
+    const originalRenderPage = context.renderPage
 
     try {
-      ctx.renderPage = () =>
+      context.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App: any) => (props: any) =>
-            sheet.collectStyles(<App {...props} />),
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
         })
 
-      const initialProps = await Document.getInitialProps(ctx)
+      const initialProps = await Document.getInitialProps(context)
 
       return {
         ...initialProps,
@@ -30,5 +27,19 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal()
     }
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head>
+          <link rel='manifest' href='/manifest.json' />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
   }
 }
