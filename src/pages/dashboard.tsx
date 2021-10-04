@@ -1,17 +1,18 @@
 import { GetServerSideProps } from 'next'
 
+import PageWrapper from 'components/common/PageWrapper'
+
 import { Dashboard } from 'views'
 
-import PageProvider from 'contexts/PageProvider'
 import { withAuth } from 'utils/auth'
 import { getDefaultServerSideProps } from 'utils/defaultServerSidePropGetters'
 
 import { PageProps } from 'types/pageProps'
 
 const Page = ({ currentLocale, ...props }: PageProps) => (
-  <PageProvider currentLocale={currentLocale}>
+  <PageWrapper currentLocale={currentLocale}>
     <Dashboard {...props} />
-  </PageProvider>
+  </PageWrapper>
 )
 
 export const getServerSideProps: GetServerSideProps = async context => {

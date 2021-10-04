@@ -1,75 +1,58 @@
-import { ReactNode } from 'react'
+import { useMemo } from 'react'
 
-import { ThemeProvider } from '@xstyled/styled-components'
 import merge from 'lodash/merge'
 
-import Compose from 'components/common/Compose'
-
-import { BusinessInfoProvider } from 'contexts/BusinessInfoContext'
-import { LocaleProvider } from 'contexts/LocaleContext'
-
-import defaultBusinessInfo from 'settings/defaultBusinessInfo'
-
-import { BusinessInfo } from 'types/businessSettings'
-import { LocaleKeys } from 'types/locales'
-import { PageProviderProps } from 'types/pageProps'
-import { Theme } from 'types/theme'
-
-import defaultTheme from 'theme/defaultTheme'
+import DynamicPageProvider from 'contexts/PageProvider/DynamicPageProvider'
+import { isUsingBusinessSettingsProvider } from 'utils/businessSettings'
+import { sanitizeTheme } from 'utils/theme'
 
 import userSettingsMock from 'mocks/businessSettings'
+import defaultBusinessInfo from 'settings/defaultBusinessInfo'
+import defaultTheme from 'theme/globalTheme'
 
-type DynamicPageProviderProps = {
-  children: ReactNode
-  theme: Theme
-  locale: LocaleKeys
-  businessInfo: BusinessInfo
+import { PageProviderProps } from 'types/pageProps'
+
+const getBusinessSettings = () => {
+  if (isUsingBusinessSettingsProvider) {
+    return userSettingsMock
+  }
+
+  return null
 }
 
-const DynamicPageProvider = ({
-  children,
-  theme,
-  locale,
-  businessInfo,
-}: DynamicPageProviderProps) => (
-  <Compose
-    components={[
-      {
-        render: BusinessInfoProvider,
-        props: {
-          businessInfo: merge({}, defaultBusinessInfo, businessInfo),
-        },
-      },
-      {
-        render: LocaleProvider,
-        props: {
-          locale,
-        },
-      },
-      {
-        render: ThemeProvider,
-        props: {
-          theme: merge({}, defaultTheme, theme),
-        },
-      },
-    ]}
-  >
-    {children}
-  </Compose>
-)
+const PageProvider = ({ children, currentLocale }: PageProviderProps) => {
+  const businessSettings = getBusinessSettings()
 
-const PageProviderWrapper = ({ children, currentLocale }: PageProviderProps) => {
-  const businessSettings = userSettingsMock
+  const businessSettingsTheme = businessSettings?.theme
+  const businessSettingsBusinessInfo = businessSettings?.businessInfo
+
+  const theme = useMemo(() => {
+    if (businessSettingsTheme) {
+      const mergedBusinessFromProvider = merge(
+        {},
+        defaultTheme,
+        sanitizeTheme(businessSettingsTheme)
+      )
+
+      return mergedBusinessFromProvider
+    }
+
+    return defaultTheme
+  }, [defaultTheme, businessSettingsTheme])
+
+  const businessInfo = useMemo(() => {
+    if (businessSettingsBusinessInfo) {
+      return merge({}, defaultBusinessInfo, businessSettingsBusinessInfo)
+    }
+
+    return defaultBusinessInfo
+  }, [defaultBusinessInfo, businessSettingsBusinessInfo])
 
   return (
-    <DynamicPageProvider
-      theme={businessSettings.theme}
-      locale={currentLocale}
-      businessInfo={businessSettings.businessInfo}
-    >
+    <DynamicPageProvider theme={theme} locale={currentLocale} businessInfo={businessInfo}>
       {children}
     </DynamicPageProvider>
   )
 }
 
-export default PageProviderWrapper
+export default PageProvider

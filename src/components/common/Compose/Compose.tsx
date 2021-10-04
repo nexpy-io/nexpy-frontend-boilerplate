@@ -10,17 +10,15 @@ type ComposeProps = {
   children: ReactNode
 }
 
-const Compose = ({ components = [], children }: ComposeProps) => {
-  return (
-    <>
-      {components.reduceRight((acc, component) => {
-        const ComponentToRender = component.render
-        const componentProps = component.props
+const Compose = ({ components = [], children }: ComposeProps) => (
+  <>
+    {components.reduceRight((acc, component) => {
+      const ComponentToRender = component.render
+      const componentProps = component.props
 
-        return <ComponentToRender {...componentProps}>{acc}</ComponentToRender>
-      }, children)}
-    </>
-  )
-}
+      return <ComponentToRender {...componentProps}>{acc}</ComponentToRender>
+    }, children)}
+  </>
+)
 
 export default Compose
