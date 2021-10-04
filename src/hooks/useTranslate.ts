@@ -2,9 +2,9 @@ import { useContext } from 'react'
 
 import { LocaleContext } from 'contexts/LocaleContext'
 
-import { Identifier } from 'types/locales'
-
 import getLanguages from 'locales'
+
+import { Identifier } from 'types/locales'
 
 const languages = getLanguages()
 

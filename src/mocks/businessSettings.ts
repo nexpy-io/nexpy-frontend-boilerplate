@@ -8,7 +8,9 @@ const businessSettings: BusinessSettings = {
 
       primary: '#7B1477',
       secondary: '#9A0C9D',
-      tertiary: '##d6bf3a',
+      tertiary: '#d6bf3a',
+
+      buttonActive: '#d6bf3a',
     },
   },
   businessInfo: {
