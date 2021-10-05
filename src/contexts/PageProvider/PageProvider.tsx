@@ -3,26 +3,19 @@ import { useMemo } from 'react'
 import merge from 'lodash/merge'
 
 import DynamicPageProvider from 'contexts/PageProvider/DynamicPageProvider'
-import { isUsingBusinessSettingsProvider } from 'utils/businessSettings'
+import { removeEmpty } from 'utils/dataStructures/objects'
 import { sanitizeTheme } from 'utils/theme'
 
-import userSettingsMock from 'mocks/businessSettings'
 import defaultBusinessInfo from 'settings/defaultBusinessInfo'
 import defaultTheme from 'theme/globalTheme'
 
 import { PageProviderProps } from 'types/pageProps'
 
-const getBusinessSettings = () => {
-  if (isUsingBusinessSettingsProvider) {
-    return userSettingsMock
-  }
-
-  return null
-}
-
-const PageProvider = ({ children, currentLocale }: PageProviderProps) => {
-  const businessSettings = getBusinessSettings()
-
+const PageProvider = ({
+  children,
+  currentLocale,
+  businessSettings,
+}: PageProviderProps) => {
   const businessSettingsTheme = businessSettings?.theme
   const businessSettingsBusinessInfo = businessSettings?.businessInfo
 
@@ -31,7 +24,7 @@ const PageProvider = ({ children, currentLocale }: PageProviderProps) => {
       const mergedBusinessFromProvider = merge(
         {},
         defaultTheme,
-        sanitizeTheme(businessSettingsTheme)
+        sanitizeTheme(removeEmpty(businessSettingsTheme))
       )
 
       return mergedBusinessFromProvider
@@ -42,7 +35,7 @@ const PageProvider = ({ children, currentLocale }: PageProviderProps) => {
 
   const businessInfo = useMemo(() => {
     if (businessSettingsBusinessInfo) {
-      return merge({}, defaultBusinessInfo, businessSettingsBusinessInfo)
+      return merge({}, defaultBusinessInfo, removeEmpty(businessSettingsBusinessInfo))
     }
 
     return defaultBusinessInfo

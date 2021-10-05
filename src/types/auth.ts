@@ -42,6 +42,6 @@ export type AuthContextValue = {
 }
 
 export type WithAuthReturn =
-  | { props: { [key: string]: unknown } }
+  | { props: Record<string, unknown> }
   | { redirect: Redirect }
   | { notFound: true }
