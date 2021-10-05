@@ -6,8 +6,8 @@ import { PageProviderProps } from 'types/pageProps'
 
 type PageWrapperProps = PageProviderProps
 
-const PageWrapper = ({ currentLocale, children }: PageWrapperProps) => (
-  <PageProvider currentLocale={currentLocale}>
+const PageWrapper = ({ currentLocale, businessSettings, children }: PageWrapperProps) => (
+  <PageProvider currentLocale={currentLocale} businessSettings={businessSettings}>
     <HeadManager />
     {children}
   </PageProvider>

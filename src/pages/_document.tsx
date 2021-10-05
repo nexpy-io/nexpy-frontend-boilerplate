@@ -2,6 +2,8 @@ import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/do
 
 import { ServerStyleSheet } from 'styled-components'
 
+import Meta from 'components/common/Meta'
+
 export default class MyDocument extends Document {
   static async getInitialProps(context: DocumentContext) {
     const sheet = new ServerStyleSheet()
@@ -33,13 +35,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel='manifest' href='/manifest.json' />
-          <meta
-            name='description'
-            content='Aplicação Nexpy para gerenciamento privado do seu negócio.'
-          />
-          <meta name='theme-color' content='#9855FF' />
-          <link rel='apple-touch-icon' href='/icons/icon-192x192.png' />
+          <Meta />
         </Head>
         <body>
           <Main />

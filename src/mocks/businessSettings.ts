@@ -23,6 +23,19 @@ const businessSettings: BusinessSettings = {
     imagePaths: {
       businessLogo: '/img/temp.png',
     },
+    meta: {
+      manifestUrl: '/manifest.json',
+      appleTouchIcon: '/icons/icon-192x192.png',
+      description: 'Jaqueline Furtado Salão de Beleza',
+      themeColor: '#9855FF',
+      ogDescription: 'Jaqueline Furtado Salão de Beleza',
+      ogTitle: 'Jaqueline Furtado',
+      ogImage: '/icons/icon-512x512.png',
+      ogSiteName: 'Jaqueline Furtado',
+      twitterTitle: 'Jaqueline Furtado',
+      twitterDescription: 'Jaqueline Furtado Salão de Beleza',
+      twitterImage: '/icons/icon-512x512.png',
+    },
   },
 }
 

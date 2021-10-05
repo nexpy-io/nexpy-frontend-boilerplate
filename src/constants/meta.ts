@@ -1,0 +1,16 @@
+export const META_TAGS_IDENTIFIER_KEYS = {
+  TITLE: 'title',
+  FAVICON: 'favicon',
+  MANIFEST: 'manifest',
+  APPLE_TOUCH_ICON: 'apple-touch-icon',
+  DESCRIPTION: 'description',
+  THEME_COLOR: 'theme-color',
+  OG_TYPE: 'og:type',
+  OG_DESCRIPTION: 'og:description',
+  OG_TITLE: 'og:title',
+  OG_IMAGE: 'og:image',
+  SITE_NAME: 'og:site_name',
+  TWITTER_TITLE: 'twitter:title',
+  TWITTER_DESCRIPTION: 'twitter:description',
+  TWITTER_IMAGE: 'twitter:image',
+}
