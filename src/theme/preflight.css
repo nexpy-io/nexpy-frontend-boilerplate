@@ -239,6 +239,7 @@ html {
   font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell',
     'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
+  font-display: swap;
 }
 code,
 kbd,
@@ -247,6 +248,7 @@ pre {
   font-family: ui-monospace, 'Menlo', 'Consolas', 'Roboto Mono', 'Ubuntu Monospace',
     'Noto Mono', 'Oxygen Mono', 'Liberation Mono', monospace, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-display: swap;
 }
 :where(button, input, select, textarea) {
   background-color: transparent;
