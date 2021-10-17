@@ -3,7 +3,7 @@ import axios from 'axios'
 import { NEXT_PUBLIC_API_URL } from 'utils/environment'
 import { getAuthTokenOrUndefined } from 'utils/sessions'
 
-import { NookiesNextContext } from 'types/nextContext'
+import { NookiesNextContext } from 'types/ssr'
 
 const getHTTPClient = (nextContext?: NookiesNextContext) => {
   const axiosConfig = {

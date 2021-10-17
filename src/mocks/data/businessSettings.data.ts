@@ -1,6 +1,6 @@
 import { BusinessSettings } from 'types/businessSettings'
 
-const businessSettings: BusinessSettings = {
+export const businessSettings: BusinessSettings = {
   theme: {
     colors: {
       black: '#28262C',
@@ -16,6 +16,7 @@ const businessSettings: BusinessSettings = {
   businessInfo: {
     core: {
       useDefaultLoader: false,
+      businessName: 'jaqueline-furtado',
     },
     businessData: {
       businessName: 'Jaqueline Furtado',
@@ -38,5 +39,3 @@ const businessSettings: BusinessSettings = {
     },
   },
 }
-
-export default businessSettings

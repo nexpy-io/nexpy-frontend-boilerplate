@@ -1,11 +1,14 @@
 import { Theme } from 'types/theme'
 
+export type BusinessName = string
+
 export type BusinessInfo = {
   core: {
     useDefaultLoader: boolean
+    businessName: string
   }
   businessData: {
-    businessName: string
+    businessName: BusinessName
   }
   imagePaths: {
     businessLogo: string

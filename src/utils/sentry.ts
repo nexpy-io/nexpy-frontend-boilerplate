@@ -30,13 +30,13 @@ export const initSentry = () => {
     })
   } catch (error) {
     console.error(
-      '[MONITORING] Sentry not loaded. An error was encountered when starting Sentry.',
+      '[MONITORING] Sentry not loaded. An error was encountered when starting Sentry.\n',
       error
     )
   }
 }
 
-export const captureException = async (error: Error | Exception) => {
+export const captureException = async (error: Error | Exception | unknown) => {
   if (isProductionMode()) {
     try {
       sentryCaptureException(error)
@@ -54,12 +54,12 @@ export const captureException = async (error: Error | Exception) => {
       console.error(
         `Flush pass: ${success}`,
         'This exception was caught automatically and will be debugged.',
-        'Your correction will be evaluated and contact support is not necessary.',
+        'Your correction will be evaluated and contact support is not necessary.\n',
         error
       )
     } catch {
       console.error(
-        '[MONITORING] It was not possible to send exception data for Nexpy servers. Please report this bug! ',
+        '[MONITORING] It was not possible to send exception data for Nexpy servers. Please report this bug!\n',
         error
       )
     }
