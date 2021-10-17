@@ -1,23 +1,43 @@
-import { useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 
 import merge from 'lodash/merge'
+import useSWR from 'swr'
 
 import DynamicPageProvider from 'contexts/PageProvider/DynamicPageProvider'
+import { businessSettingsService } from 'services/clientSide/businessSettings'
 import { removeEmpty } from 'utils/dataStructures/objects'
+import { captureException } from 'utils/sentry'
 import { sanitizeTheme } from 'utils/theme'
 
 import defaultBusinessInfo from 'settings/defaultBusinessInfo'
 import defaultTheme from 'theme/globalTheme'
 
-import { PageProviderProps } from 'types/pageProps'
+import { PageProviderProps, PartialBusinessSettings } from 'types/pageProps'
+
+type CurrentBusinessInfo = PartialBusinessSettings | undefined
 
 const PageProvider = ({
   children,
   currentLocale,
   businessSettings,
 }: PageProviderProps) => {
-  const businessSettingsTheme = businessSettings?.theme
-  const businessSettingsBusinessInfo = businessSettings?.businessInfo
+  const [currentBusinessInfo, setCurrentBusinessInfo] =
+    useState<CurrentBusinessInfo>(businessSettings)
+
+  const ssrProvidedBusinessName = businessSettings?.businessInfo?.core.businessName
+  const businessSettingsTheme = currentBusinessInfo?.theme
+  const businessSettingsBusinessInfo = currentBusinessInfo?.businessInfo
+
+  const { data: revalidatedBusinessInfo, error: businessInfoRevalidationError } = useSWR(
+    () => `swr/businessData/revalidation<${ssrProvidedBusinessName || 'unknown'}>`,
+    () => {
+      if (ssrProvidedBusinessName) {
+        return businessSettingsService(ssrProvidedBusinessName)
+      }
+
+      return undefined
+    }
+  )
 
   const theme = useMemo(() => {
     if (businessSettingsTheme) {
@@ -40,6 +60,20 @@ const PageProvider = ({
 
     return defaultBusinessInfo
   }, [defaultBusinessInfo, businessSettingsBusinessInfo])
+
+  useEffect(() => {
+    const revalidatedBusinessInfoData = revalidatedBusinessInfo?.data
+
+    if (businessInfoRevalidationError) {
+      captureException(businessInfoRevalidationError)
+
+      return
+    }
+
+    if (revalidatedBusinessInfoData) {
+      setCurrentBusinessInfo(revalidatedBusinessInfoData)
+    }
+  }, [revalidatedBusinessInfo, businessInfoRevalidationError])
 
   return (
     <DynamicPageProvider theme={theme} locale={currentLocale} businessInfo={businessInfo}>

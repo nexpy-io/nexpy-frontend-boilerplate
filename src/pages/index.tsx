@@ -15,7 +15,7 @@ const Page = ({ currentLocale, businessSettings, ...props }: PageProps) => (
 )
 
 export const getStaticProps: GetStaticProps = async context => {
-  const props = getDefaultStaticProps(context)
+  const props = await getDefaultStaticProps(context)
 
   return {
     props,

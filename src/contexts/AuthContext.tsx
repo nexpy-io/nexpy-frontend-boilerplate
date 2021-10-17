@@ -5,7 +5,7 @@ import useSWR from 'swr'
 
 import { DEFAULT_LOGIN_PAGE_REDIRECT_PATH } from 'constants/auth'
 import { nexpyClientSideClient } from 'providers'
-import { signInService, revalidateUserService } from 'services/auth'
+import { signInService, revalidateUserService } from 'services/clientSide/auth'
 import {
   clearCurrentSessionCookie,
   getAuthTokenOrUndefined,

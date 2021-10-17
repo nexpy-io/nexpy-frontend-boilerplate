@@ -1,4 +1,4 @@
-import { signInMockRequest, recoverUserInfoMockRequest } from 'mocks/services'
+import { signInMockRequest, recoverUserInfoMockRequest } from 'mocks/services/auth'
 
 export const signInService = signInMockRequest
 

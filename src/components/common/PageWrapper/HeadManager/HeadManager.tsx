@@ -5,8 +5,7 @@ import { useBusiness, useHead } from 'hooks'
 import { META_TAGS_IDENTIFIER_KEYS } from 'constants/meta'
 
 const HeadManager = () => {
-  const businessSettings = useBusiness()
-  const { businessData, meta } = businessSettings
+  const { businessData, meta } = useBusiness()
 
   const {
     head: { faviconUrl, headTitle, headTitleDescription },
@@ -24,7 +23,7 @@ const HeadManager = () => {
 
   return (
     <NextHead>
-      <title key='title'>{resolveTitle()}</title>
+      <title key={META_TAGS_IDENTIFIER_KEYS.TITLE}>{resolveTitle()}</title>
 
       {faviconUrl && (
         <link

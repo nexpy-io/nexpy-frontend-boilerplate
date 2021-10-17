@@ -1,5 +1,7 @@
-import { AppProps as NextAppProps } from 'next/app'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
 
+import { META_TAGS_IDENTIFIER_KEYS } from 'constants/meta'
 import AppProvider from 'contexts/AppProvider'
 import { initSentry } from 'utils/sentry'
 
@@ -7,14 +9,13 @@ import 'theme/preflight.css'
 
 initSentry()
 
-type AppProps = {
-  err: unknown
-} & NextAppProps
-
-// Workaround for https://github.com/vercel/next.js/issues/8592
-const App = ({ Component, pageProps, err }: AppProps) => (
+const App = ({ Component, pageProps }: AppProps) => (
   <AppProvider>
-    <Component {...pageProps} err={err} />
+    <Head>
+      <title key={META_TAGS_IDENTIFIER_KEYS.TITLE}>Nexpy</title>
+      <meta name='viewport' content='width=device-width' />
+    </Head>
+    <Component {...pageProps} />
   </AppProvider>
 )
 

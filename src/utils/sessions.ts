@@ -3,7 +3,7 @@ import { setCookie, parseCookies, destroyCookie } from 'nookies'
 import { AUTHORIZATION_COOKIE_NAME, AUTHORIZATION_COOKIE_MAX_AGE } from 'constants/auth'
 import { getUnobfuscatedToken, getObfuscatedToken } from 'utils/crypt'
 
-import { NookiesNextContext } from 'types/nextContext'
+import { NookiesNextContext } from 'types/ssr'
 
 export const getAuthTokenOrUndefined = (context?: NookiesNextContext) => {
   const { [AUTHORIZATION_COOKIE_NAME]: obfuscatedToken } = parseCookies(context)
