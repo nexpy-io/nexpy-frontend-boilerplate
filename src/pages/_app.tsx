@@ -18,7 +18,7 @@ const App = ({ Component, pageProps }: AppProps) => (
       <meta property='og:type' content='company' />
       <meta name='robots' content='index,follow' />
       <meta charSet='utf-8' />
-      {/*
+
       <link
         key={META_TAGS_IDENTIFIER_KEYS.FAVICON}
         rel='shortcut icon'
@@ -79,7 +79,7 @@ const App = ({ Component, pageProps }: AppProps) => (
         key={META_TAGS_IDENTIFIER_KEYS.TWITTER_IMAGE}
         property='twitter:image'
         content='/icons/icon-512x512.png'
-      /> */}
+      />
     </Head>
     <Component {...pageProps} />
   </AppProvider>
