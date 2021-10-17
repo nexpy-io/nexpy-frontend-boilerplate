@@ -1,6 +1,6 @@
 {
-  "short_name": "Nexpy - JF",
-  "name": "Nexpy - Jaqueline Furtado",
+  "short_name": "Nexpy",
+  "name": "Nexpy App",
   "description": "Aplicação Nexpy para gerenciamento privado.",
   "icons": [
     {
@@ -45,7 +45,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": "/customer/jaqueline-furtado",
+  "start_url": "/",
   "background_color": "#f9f5ff",
   "display": "standalone",
   "scope": "/",
