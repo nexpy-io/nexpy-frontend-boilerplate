@@ -48,6 +48,6 @@
   "start_url": "/customer/jaqueline-furtado",
   "background_color": "#f9f5ff",
   "display": "standalone",
-  "scope": "/",
+  "scope": "/customer/jaqueline-furtado",
   "theme_color": "#9855FF"
 }
