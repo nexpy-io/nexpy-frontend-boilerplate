@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://front-boilerplate.nexpy.com.br/">
-    <img src="https://user-images.githubusercontent.com/41436010/125207308-fbd9eb80-e261-11eb-98e4-7ae01ad1f143.png" width="600">
-  </a>
+  <img src="https://user-images.githubusercontent.com/41436010/125207308-fbd9eb80-e261-11eb-98e4-7ae01ad1f143.png" width="600">
 </p>
 
 # nexpy-frontend-boilerplate
@@ -21,8 +19,6 @@
 ## More Docs
 
 **Documentation is under construction and may not be fully available.**
-
-A components documentation is available [here](https://nexpy-frontend-boilerplate-storybook.nexpy.com.br/).
 
 <br /><br />
 
