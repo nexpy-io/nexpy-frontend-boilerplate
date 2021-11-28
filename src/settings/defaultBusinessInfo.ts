@@ -14,6 +14,8 @@ const defaultBusinessInfo: BusinessInfo = {
   meta: {
     manifestUrl: '/manifest.json',
     appleTouchIcon: '/icons/icon-192x192.png',
+    applicationName: 'Nexpy',
+    appleMobileWebAppTitle: 'Aplicação Nexpy para gerenciamento privado do seu negócio.',
     description: 'Aplicação Nexpy para gerenciamento privado do seu negócio.',
     themeColor: '#9855FF',
     ogDescription: 'Aplicação Nexpy para gerenciamento privado do seu negócio.',

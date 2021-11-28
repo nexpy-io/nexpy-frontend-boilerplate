@@ -10,10 +10,13 @@ export type SignIn = {
   password: Password
 }
 
+export type UserClass = 'ADM' | 'DF'
+
 export type User = {
   id: string
-  auth: {
+  auth?: {
     token: string
+    refreshToken: string
   }
   personalData: {
     firstName: string
@@ -26,7 +29,7 @@ export type User = {
   }
   metadata: {
     isActive: boolean
-    userClass: 'defaultUser' | 'admin'
+    userClass: UserClass
     createdAtDate: string
     lastLoginDate: string
     preferredLanguage: LocaleKeys

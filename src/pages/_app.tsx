@@ -18,6 +18,10 @@ const App = ({ Component, pageProps }: AppProps) => (
       <meta property='og:type' content='company' />
       <meta name='robots' content='index,follow' />
       <meta charSet='utf-8' />
+      <meta name='apple-mobile-web-app-capable' content='yes' />
+      <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+      <meta name='format-detection' content='telephone=no' />
+      <meta name='mobile-web-app-capable' content='yes' />
 
       <link
         key={META_TAGS_IDENTIFIER_KEYS.FAVICON}
@@ -35,6 +39,16 @@ const App = ({ Component, pageProps }: AppProps) => (
         href='/icons/icon-192x192.png'
       />
 
+      <meta
+        key={META_TAGS_IDENTIFIER_KEYS.APPLICATION_NAME}
+        name='application-name'
+        content='Nexpy'
+      />
+      <meta
+        key={META_TAGS_IDENTIFIER_KEYS.APPLE_MOBILE_WEB_APP_TITLE}
+        name='apple-mobile-web-app-title'
+        content='Nexpy'
+      />
       <meta
         key={META_TAGS_IDENTIFIER_KEYS.DESCRIPTION}
         name='description'

@@ -47,6 +47,20 @@ const HeadManager = () => {
         />
       )}
 
+      {meta.applicationName && (
+        <meta
+          key={META_TAGS_IDENTIFIER_KEYS.APPLICATION_NAME}
+          name='application-name'
+          content={meta.applicationName}
+        />
+      )}
+      {meta.appleMobileWebAppTitle && (
+        <meta
+          key={META_TAGS_IDENTIFIER_KEYS.APPLE_MOBILE_WEB_APP_TITLE}
+          name='apple-mobile-web-app-title'
+          content={meta.appleMobileWebAppTitle}
+        />
+      )}
       {meta.description && (
         <meta
           key={META_TAGS_IDENTIFIER_KEYS.DESCRIPTION}

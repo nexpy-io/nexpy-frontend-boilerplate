@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { JSXElementConstructor, PropsWithChildren, ReactNode } from 'react'
+import { memo, JSXElementConstructor, PropsWithChildren, ReactNode } from 'react'
 
 type ComposeProps = {
   components: {
@@ -21,4 +21,4 @@ const Compose = ({ components = [], children }: ComposeProps) => (
   </>
 )
 
-export default Compose
+export default memo(Compose)

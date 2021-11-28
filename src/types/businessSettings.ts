@@ -17,6 +17,8 @@ export type BusinessInfo = {
     manifestUrl: string | null
     appleTouchIcon: string | null
     description: string | null
+    applicationName: string | null
+    appleMobileWebAppTitle: string | null
     themeColor: string | null
     ogDescription: string | null
     ogTitle: string | null

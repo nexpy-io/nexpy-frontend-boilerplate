@@ -4,6 +4,7 @@ export const userMock: User = {
   id: '1',
   auth: {
     token: 'LKNBOIPJKMBIUOKLJMKLOKML',
+    refreshToken: 'LKNBOIPJKMBIUOKLJMKLOKML',
   },
   personalData: {
     firstName: 'Allan',
@@ -16,7 +17,7 @@ export const userMock: User = {
   },
   metadata: {
     isActive: true,
-    userClass: 'admin',
+    userClass: 'ADM',
     createdAtDate: '2021-05-23',
     lastLoginDate: '2021-06-27',
     preferredLanguage: 'pt',

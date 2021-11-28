@@ -27,6 +27,8 @@ export const businessSettings: BusinessSettings = {
     meta: {
       manifestUrl: '/manifest-mock.json',
       appleTouchIcon: '/icons/icon-192x192.png',
+      applicationName: 'Jaqueline Furtado',
+      appleMobileWebAppTitle: 'Jaqueline Furtado Salão de Beleza',
       description: 'Jaqueline Furtado Salão de Beleza',
       themeColor: '#9855FF',
       ogDescription: 'Jaqueline Furtado Salão de Beleza',

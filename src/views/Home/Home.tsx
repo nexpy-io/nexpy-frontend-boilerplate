@@ -1,12 +1,21 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
-import { useTranslate } from 'hooks'
+import { useAuth, useTranslate } from 'hooks'
 
 import styles from './Home.module.scss'
 
 const Home = () => {
+  const { signIn } = useAuth()
   const { t, currentLocale } = useTranslate()
+
+  useEffect(() => {
+    signIn({
+      email: 'admin@email.com',
+      password: 'Aln3skrillex.',
+    })
+  }, [])
 
   return (
     <>
