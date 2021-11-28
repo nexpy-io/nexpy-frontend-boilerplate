@@ -1,8 +1,8 @@
 {
   "*.{ts,js,tsx,jsx}": [
-    "yarn --silent prettier",
-    "yarn --silent eslint",
-    "yarn --silent stylelint:check"
+    "prettier --loglevel warn --write",
+    "eslint --fix --quiet --max-warnings 0",
+    "stylelint --quiet"
   ],
-  "*.{css,md,mdx,json}}": ["yarn --silent prettier"]
+  "*.{css,md,mdx,json}}": ["prettier --loglevel warn --write"]
 }
