@@ -46,9 +46,6 @@ jobs:
       - run:
           name: Verify Code Quality and Integrity
           command: yarn eslint:check
-      - run:
-          name: Verify Stylesheets Quality and Integrity
-          command: yarn stylelint:check
 
   test:
     working_directory: ~/repo

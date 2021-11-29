@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postinstall": "husky install",
-    "reinstall": "yarn concurrently \"rm -rf ./node_modules\" \"rm -rf ./yarn.lock ./package-lock.json ./.next ./storybook-static\" && yarn",
+    "reinstall": "yarn concurrently \"rm -rf ./node_modules\" \"rm -rf ./yarn.lock ./package-lock.json ./.next ./storybook-static coverage\" && yarn",
     "dev": "next dev",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
@@ -15,7 +15,6 @@
     "prettier:check": "prettier --check .",
     "eslint": "eslint --fix --max-warnings 0 .",
     "eslint:check": "eslint --max-warnings 0 .",
-    "stylelint:check": "stylelint \"src/**/*.tsx\" \"src/**/*.ts\" --quiet",
     "test": "cross-env NODE_ENV=test jest",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook"
@@ -92,11 +91,7 @@
     "jest": "^27.3.1",
     "lint-staged": "^12.1.2",
     "prettier": "^2.5.0",
-    "stylelint": "^14.1.0",
-    "stylelint-config-recommended": "^6.0.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.10.0",
-    "typescript": "^4.4.3"
+    "typescript": "4.4.3"
   },
   "config": {
     "commitizen": {

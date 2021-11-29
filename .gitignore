@@ -71,6 +71,7 @@ dist
 
 # Builds
 build
+*.tsbuildinfo
 .firebase
 coverage/
 

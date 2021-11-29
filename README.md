@@ -202,16 +202,6 @@ Looks for code integrity errors in all files without changing them, reporting po
 
 <br /><br />
 
-### Check stylesheet patterns
-
-```sh
-yarn stylelint:check
-```
-
-Checks whether the styling in CSS files and styled components are properly formatted.
-
-<br /><br />
-
 ### Test the application
 
 ```sh
