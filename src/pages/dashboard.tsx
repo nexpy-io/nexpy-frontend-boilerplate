@@ -16,7 +16,7 @@ const Page = ({ currentLocale, businessSettings, ...props }: PageProps) => (
 )
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const props = await getDefaultServerSideProps(context)
+  const props = getDefaultServerSideProps(context)
 
   return withAuth(context, {
     props,

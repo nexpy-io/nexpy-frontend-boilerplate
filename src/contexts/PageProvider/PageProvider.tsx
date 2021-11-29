@@ -5,6 +5,7 @@ import useSWR from 'swr'
 
 import DynamicPageProvider from 'contexts/PageProvider/DynamicPageProvider'
 import { businessSettingsService } from 'services/clientSide/businessSettings'
+
 import { removeEmpty } from 'utils/dataStructures/objects'
 import { captureException } from 'utils/sentry'
 import { sanitizeTheme } from 'utils/theme'
@@ -51,7 +52,7 @@ const PageProvider = ({
     }
 
     return defaultTheme
-  }, [defaultTheme, businessSettingsTheme])
+  }, [businessSettingsTheme])
 
   const businessInfo = useMemo(() => {
     if (businessSettingsBusinessInfo) {
@@ -59,16 +60,16 @@ const PageProvider = ({
     }
 
     return defaultBusinessInfo
-  }, [defaultBusinessInfo, businessSettingsBusinessInfo])
+  }, [businessSettingsBusinessInfo])
 
   useEffect(() => {
-    const revalidatedBusinessInfoData = revalidatedBusinessInfo?.data
-
     if (businessInfoRevalidationError) {
       captureException(businessInfoRevalidationError)
 
       return
     }
+
+    const revalidatedBusinessInfoData = revalidatedBusinessInfo?.data
 
     if (revalidatedBusinessInfoData) {
       setCurrentBusinessInfo(revalidatedBusinessInfoData)

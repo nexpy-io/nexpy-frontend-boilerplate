@@ -1,10 +1,8 @@
-import { ReactNode } from 'react'
-
 import { AuthProvider } from 'contexts/AuthContext'
 
-type AppProviderProps = {
-  children: ReactNode
-}
+import { DefaultComponentProps } from 'types/components'
+
+type AppProviderProps = DefaultComponentProps
 
 const AppProvider = ({ children }: AppProviderProps) => (
   <AuthProvider>{children}</AuthProvider>

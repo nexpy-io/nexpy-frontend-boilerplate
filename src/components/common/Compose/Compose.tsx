@@ -1,14 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { memo, JSXElementConstructor, PropsWithChildren } from 'react'
 
-import { memo, JSXElementConstructor, PropsWithChildren, ReactNode } from 'react'
-
-type ComposeProps = {
+type ComposeProps = PropsWithChildren<{
   components: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     render: JSXElementConstructor<PropsWithChildren<any>>
     props?: Record<string, unknown>
   }[]
-  children: ReactNode
-}
+}>
 
 const Compose = ({ components = [], children }: ComposeProps) => (
   <>

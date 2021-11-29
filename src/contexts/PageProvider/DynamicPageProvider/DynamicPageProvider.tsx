@@ -1,4 +1,4 @@
-import { memo, ReactNode } from 'react'
+import { memo, PropsWithChildren } from 'react'
 
 import { ThemeProvider } from '@xstyled/styled-components'
 
@@ -12,12 +12,11 @@ import { BusinessInfo } from 'types/businessSettings'
 import { LocaleKeys } from 'types/locales'
 import { Theme } from 'types/theme'
 
-type DynamicPageProviderProps = {
-  children: ReactNode
+type DynamicPageProviderProps = PropsWithChildren<{
   theme: Theme | null
   locale: LocaleKeys
   businessInfo: BusinessInfo | null
-}
+}>
 
 const DynamicPageProvider = ({
   children,

@@ -1,4 +1,5 @@
 import NextHead from 'next/head'
+import { useMemo } from 'react'
 
 import { useBusiness, useHead } from 'hooks'
 
@@ -11,7 +12,7 @@ const HeadManager = () => {
     head: { faviconUrl, headTitle, headTitleDescription },
   } = useHead()
 
-  const resolveTitle = () => {
+  const resolvedTitle = useMemo(() => {
     const mainTitle = headTitle || businessData.businessName
 
     if (headTitleDescription) {
@@ -19,18 +20,14 @@ const HeadManager = () => {
     }
 
     return mainTitle
-  }
+  }, [businessData.businessName, headTitle, headTitleDescription])
 
   return (
     <NextHead>
-      <title key={META_TAGS_IDENTIFIER_KEYS.TITLE}>{resolveTitle()}</title>
+      <title key={META_TAGS_IDENTIFIER_KEYS.TITLE}>{resolvedTitle}</title>
 
       {faviconUrl && (
-        <link
-          key={META_TAGS_IDENTIFIER_KEYS.FAVICON}
-          rel='shortcut icon'
-          href={faviconUrl}
-        />
+        <link key={META_TAGS_IDENTIFIER_KEYS.FAVICON} rel='icon' href={faviconUrl} />
       )}
       {meta.manifestUrl && (
         <link

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 
 import { BusinessSettings } from 'types/businessSettings'
 import { LocaleKeys } from 'types/locales'
@@ -10,6 +10,4 @@ export type PageProps = {
   businessSettings?: PartialBusinessSettings
 }
 
-export type PageProviderProps = {
-  children?: ReactNode
-} & PageProps
+export type PageProviderProps = PropsWithChildren<PageProps>

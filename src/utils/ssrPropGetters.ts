@@ -6,10 +6,10 @@ const resolveLocale = (context: GetStaticPropsContext | GetServerSidePropsContex
   return context.locale || context.defaultLocale || DEFAULT_LOCALE_IDENTIFIER
 }
 
-export const getDefaultStaticProps = async (context: GetStaticPropsContext) => ({
+export const getDefaultStaticProps = (context: GetStaticPropsContext) => ({
   currentLocale: resolveLocale(context),
 })
 
-export const getDefaultServerSideProps = async (context: GetServerSidePropsContext) => ({
+export const getDefaultServerSideProps = (context: GetServerSidePropsContext) => ({
   currentLocale: resolveLocale(context),
 })

@@ -15,7 +15,7 @@ const Home = () => {
       email: 'admin@email.com',
       password: 'Aln3skrillex.',
     })
-  }, [])
+  }, [signIn])
 
   return (
     <>
@@ -53,7 +53,7 @@ const Home = () => {
           <footer>
             <p>{t('home.use')}</p>
             <div>
-              <Link href='https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate'>
+              <Link href='https://github.com/nexpy-io/nexpy-frontend-boilerplate'>
                 <a target='_blank' rel='noreferrer'>
                   <Image
                     width={24}

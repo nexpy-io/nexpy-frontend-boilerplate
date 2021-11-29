@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { NEXT_PUBLIC_API_URL } from 'utils/environment'
-import { getAuthTokenOrUndefined } from 'utils/sessions'
+import { assignAuthorizationHeaderValue, getAuthTokenOrUndefined } from 'utils/sessions'
 
 import { NookiesNextContext } from 'types/ssr'
 
@@ -14,8 +14,8 @@ const getHTTPClient = (nextContext?: NookiesNextContext) => {
 
   const currentToken = getAuthTokenOrUndefined(nextContext)
 
-  if (currentToken && httpClient.defaults.headers) {
-    httpClient.defaults.headers.Authorization = `Bearer ${currentToken}`
+  if (currentToken) {
+    assignAuthorizationHeaderValue(httpClient, currentToken)
   }
 
   return httpClient

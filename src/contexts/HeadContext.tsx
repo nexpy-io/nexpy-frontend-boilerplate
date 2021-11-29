@@ -1,4 +1,6 @@
-import { createContext, useState, ReactNode, useCallback } from 'react'
+import { useMemo, createContext, useState, useCallback } from 'react'
+
+import { DefaultComponentProps } from 'types/components'
 
 type HeadValue = {
   headTitle: string
@@ -13,9 +15,7 @@ type HeadContextValue = {
   setFaviconUrl: (faviconUrl: string) => void
 }
 
-type HeadProviderProps = {
-  children: ReactNode
-}
+type HeadProviderProps = DefaultComponentProps
 
 export const HeadContext = createContext({} as HeadContextValue)
 
@@ -47,16 +47,15 @@ export const HeadProvider = ({ children }: HeadProviderProps) => {
     }))
   }, [])
 
-  return (
-    <HeadContext.Provider
-      value={{
-        head,
-        setHeadTitle,
-        setHeadTitleDescription,
-        setFaviconUrl,
-      }}
-    >
-      {children}
-    </HeadContext.Provider>
+  const memoValue = useMemo(
+    () => ({
+      head,
+      setHeadTitle,
+      setHeadTitleDescription,
+      setFaviconUrl,
+    }),
+    [head, setFaviconUrl, setHeadTitle, setHeadTitleDescription]
   )
+
+  return <HeadContext.Provider value={memoValue}>{children}</HeadContext.Provider>
 }

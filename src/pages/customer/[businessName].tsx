@@ -4,7 +4,8 @@ import PageWrapper from 'components/common/PageWrapper'
 
 import { Customer } from 'views'
 
-import { resolveServerSideBusinessSettings } from 'utils/businessSettings'
+import { resolveServerSideBusinessSettings } from 'resolvers/resolveServerSideBusinessSettings'
+
 import { getDefaultStaticProps } from 'utils/ssrPropGetters'
 
 import { PageProps } from 'types/pageProps'
@@ -16,7 +17,8 @@ const Page = ({ currentLocale, businessSettings, ...props }: PageProps) => (
 )
 
 export const getStaticProps: GetStaticProps = async context => {
-  const defaultProps = await getDefaultStaticProps(context)
+  const defaultProps = getDefaultStaticProps(context)
+
   const businessSettings = await resolveServerSideBusinessSettings(
     context.params?.businessName
   )

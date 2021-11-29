@@ -1,8 +1,9 @@
 import { AppProps } from 'next/app'
-import Head from 'next/head'
+import NextHead from 'next/head'
+
+import AppProvider from 'contexts/AppProvider'
 
 import { META_TAGS_IDENTIFIER_KEYS } from 'constants/meta'
-import AppProvider from 'contexts/AppProvider'
 import { initSentry } from 'utils/sentry'
 
 import 'theme/preflight.css'
@@ -11,7 +12,7 @@ initSentry()
 
 const App = ({ Component, pageProps }: AppProps) => (
   <AppProvider>
-    <Head>
+    <NextHead>
       <title key={META_TAGS_IDENTIFIER_KEYS.TITLE}>Nexpy</title>
 
       <meta name='viewport' content='width=device-width' />
@@ -23,11 +24,7 @@ const App = ({ Component, pageProps }: AppProps) => (
       <meta name='format-detection' content='telephone=no' />
       <meta name='mobile-web-app-capable' content='yes' />
 
-      <link
-        key={META_TAGS_IDENTIFIER_KEYS.FAVICON}
-        rel='shortcut icon'
-        href='/favicon.ico'
-      />
+      <link key={META_TAGS_IDENTIFIER_KEYS.FAVICON} rel='icon' href='/favicon.ico' />
       <link
         key={META_TAGS_IDENTIFIER_KEYS.MANIFEST}
         rel='manifest'
@@ -94,7 +91,7 @@ const App = ({ Component, pageProps }: AppProps) => (
         property='twitter:image'
         content='/icons/icon-512x512.png'
       />
-    </Head>
+    </NextHead>
     <Component {...pageProps} />
   </AppProvider>
 )

@@ -1,16 +1,17 @@
 import { useRouter } from 'next/router'
-import { createContext, useState, useEffect, useCallback, ReactNode } from 'react'
+import { createContext, useState, useEffect, useCallback, useMemo } from 'react'
 
 import merge from 'lodash/merge'
 import useSWR from 'swr'
 
-import { DEFAULT_LOGIN_PAGE_REDIRECT_PATH } from 'constants/auth'
 import { nexpyClientSideClient } from 'providers'
 import {
   signInService,
   revalidateUserService,
   refreshUserService,
 } from 'services/clientSide/auth'
+
+import { DEFAULT_LOGIN_PAGE_REDIRECT_PATH } from 'constants/auth'
 import { removeEmpty } from 'utils/dataStructures/objects'
 import {
   clearCurrentSessionCookie,
@@ -19,13 +20,14 @@ import {
   getRefreshTokenOrUndefined,
   writeSessionCookie,
   writeRefreshCookie,
+  assignAuthorizationHeaderValue,
+  clearAuthorizationHeaderValue,
 } from 'utils/sessions'
 
-import { User, AuthContextValue, SignIn } from 'types/auth'
+import { User, AuthContextValue, SignIn, SignInResolver } from 'types/auth'
+import { DefaultComponentProps } from 'types/components'
 
-type AuthProviderProps = {
-  children: ReactNode
-}
+type AuthProviderProps = DefaultComponentProps
 
 export const AuthContext = createContext({} as AuthContextValue)
 
@@ -41,7 +43,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const {
     data: revalidatedUserData,
     error: userRevalidationError,
-    isValidating,
+    isValidating: isRevalidatingUser,
   } = useSWR(
     () =>
       `swr/user/revalidation|Token<${
@@ -58,63 +60,70 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   )
 
-  const registerSession = useCallback(
-    (userData: User) => {
-      const currentToken = userData.auth?.token
-      const currentRefreshToken = userData.auth?.refreshToken
+  const registerSession = useCallback((userData: User) => {
+    const currentToken = userData.auth?.token
+    const currentRefreshToken = userData.auth?.refreshToken
 
-      if (nexpyClientSideClient.defaults.headers && currentToken) {
-        nexpyClientSideClient.defaults.headers.Authorization = `Bearer ${currentToken}`
-        writeSessionCookie(currentToken)
-      }
-
-      if (currentRefreshToken) {
-        writeRefreshCookie(currentRefreshToken)
-      }
-
-      setUser(prevState => {
-        if (prevState) {
-          return merge({}, prevState, removeEmpty(userData))
-        }
-
-        return userData
-      })
-    },
-    [nexpyClientSideClient]
-  )
-
-  const signIn = useCallback(async ({ email, password }: SignIn) => {
-    const { data: userData } = await signInService({
-      email,
-      password,
-    })
-
-    if (userData) {
-      setUserCredentials({
-        email,
-        password,
-      })
-      registerSession(userData)
+    if (currentToken) {
+      assignAuthorizationHeaderValue(nexpyClientSideClient, currentToken)
+      writeSessionCookie(currentToken)
     }
+
+    if (currentRefreshToken) {
+      writeRefreshCookie(currentRefreshToken)
+    }
+
+    setUser(prevState => {
+      if (prevState) {
+        return merge({}, prevState, removeEmpty(userData))
+      }
+
+      return userData
+    })
   }, [])
+
+  const signIn = useCallback(
+    async ({ email, password, onSuccess, onError }: SignInResolver) => {
+      try {
+        const { data: userData } = await signInService({
+          email,
+          password,
+        })
+
+        if (userData) {
+          setUserCredentials({
+            email,
+            password,
+          })
+          registerSession(userData)
+
+          if (onSuccess) {
+            onSuccess(userData)
+          }
+        }
+      } catch (error) {
+        if (onError) {
+          onError(error)
+        }
+      }
+    },
+    [registerSession]
+  )
 
   const signOut = useCallback(
     (redirectPath?: string) => {
-      setUserCredentials(null)
       clearCurrentSessionCookie()
       clearCurrentRefreshCookie()
-      setUser(null)
+      clearAuthorizationHeaderValue(nexpyClientSideClient)
 
-      if (nexpyClientSideClient.defaults.headers) {
-        nexpyClientSideClient.defaults.headers.Authorization =
-          'STATUS_UNAUTHENTICATED_FORCE_ERROR'
-      }
+      setUserCredentials(null)
+      setUser(null)
 
       if (router.pathname !== DEFAULT_LOGIN_PAGE_REDIRECT_PATH) {
         router.push(redirectPath || DEFAULT_LOGIN_PAGE_REDIRECT_PATH)
       }
     },
-    [unobfuscatedToken, router]
+    [router]
   )
 
   const performRefreshRevalidation = useCallback(() => {
@@ -123,8 +132,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         signIn(userCredentials)
 
         return
-        // eslint-disable-next-line no-empty
-      } catch {}
+      } catch {
+        signOut()
+      }
     }
 
     const currentRefreshToken = getRefreshTokenOrUndefined()
@@ -146,7 +156,18 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
 
     resolveRefreshValidation()
-  }, [userCredentials])
+  }, [registerSession, signIn, signOut, userCredentials])
+
+  const memoValue = useMemo(
+    () => ({
+      user,
+      isAuthenticated,
+      isRevalidatingUser,
+      signIn,
+      signOut,
+    }),
+    [isAuthenticated, isRevalidatingUser, signIn, signOut, user]
+  )
 
   useEffect(() => {
     if (userRevalidationError) {
@@ -158,19 +179,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     if (revalidatedUserData) {
       registerSession(revalidatedUserData.data)
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [revalidatedUserData, userRevalidationError])
 
-  return (
-    <AuthContext.Provider
-      value={{
-        user,
-        isAuthenticated,
-        isRevalidatingUser: isValidating,
-        signIn,
-        signOut,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={memoValue}>{children}</AuthContext.Provider>
 }

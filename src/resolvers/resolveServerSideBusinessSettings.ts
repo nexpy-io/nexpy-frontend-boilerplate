@@ -1,4 +1,5 @@
 import { businessSettingsService } from 'services/serverSide/businessSettings'
+
 import { NEXT_PUBLIC_USE_BUSINESS_SETTINGS_PROVIDER } from 'utils/environment'
 import { captureException } from 'utils/sentry'
 
@@ -10,7 +11,7 @@ export const resolveServerSideBusinessSettings = async (
 ) => {
   let businessSettings = null
 
-  if (businessName && !Array.isArray(businessName)) {
+  if (businessName && typeof businessName === 'string') {
     try {
       const businessSettingsAxiosResponse = await businessSettingsService(businessName)
 

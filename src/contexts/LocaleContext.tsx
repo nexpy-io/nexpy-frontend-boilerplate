@@ -1,11 +1,10 @@
-import { createContext, ReactNode } from 'react'
+import { createContext, PropsWithChildren } from 'react'
 
 import { LocaleKeys } from 'types/locales'
 
-type LocaleProviderProps = {
+type LocaleProviderProps = PropsWithChildren<{
   locale: LocaleKeys
-  children: ReactNode
-}
+}>
 
 export const LocaleContext = createContext('pt' as LocaleKeys)
 

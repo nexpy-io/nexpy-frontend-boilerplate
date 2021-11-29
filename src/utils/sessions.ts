@@ -1,3 +1,6 @@
+/* eslint-disable no-param-reassign */
+
+import { AxiosInstance } from 'axios'
 import { setCookie, parseCookies, destroyCookie } from 'nookies'
 
 import {
@@ -5,6 +8,7 @@ import {
   REFRESH_COOKIE_NAME,
   AUTHORIZATION_COOKIE_MAX_AGE,
   REFRESH_COOKIE_MAX_AGE,
+  DEFAULT_TOKEN_TYPE,
 } from 'constants/auth'
 import { getUnobfuscatedToken, getObfuscatedToken } from 'utils/crypt'
 
@@ -34,6 +38,17 @@ export const writeRefreshCookie = (cookieValue: string) => {
   setCookie(undefined, REFRESH_COOKIE_NAME, getObfuscatedToken(cookieValue), {
     maxAge: REFRESH_COOKIE_MAX_AGE,
   })
+}
+
+export const assignAuthorizationHeaderValue = (
+  instance: AxiosInstance,
+  value: string
+) => {
+  instance.defaults.headers.common.Authorization = `${DEFAULT_TOKEN_TYPE} ${value}`
+}
+
+export const clearAuthorizationHeaderValue = (instance: AxiosInstance) => {
+  delete instance.defaults.headers.common.Authorization
 }
 
 export const clearCurrentSessionCookie = () => {

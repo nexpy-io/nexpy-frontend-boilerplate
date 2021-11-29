@@ -1,11 +1,10 @@
-import { createContext, ReactNode } from 'react'
+import { createContext, PropsWithChildren } from 'react'
 
 import { BusinessInfo } from 'types/businessSettings'
 
-type BusinessInfoProviderProps = {
+type BusinessInfoProviderProps = PropsWithChildren<{
   businessInfo: BusinessInfo
-  children: ReactNode
-}
+}>
 
 export const BusinessInfoContext = createContext({} as BusinessInfo)
 
