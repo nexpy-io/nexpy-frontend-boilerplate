@@ -2,6 +2,7 @@ const withPlugins = require('next-compose-plugins')
 
 const withMDX = require('@next/mdx')({ extension: /\.mdx?$/ })
 const withPWA = require('next-pwa')
+const runtimeCaching = require('next-pwa/cache')
 
 const plugins = [withMDX, withPWA]
 
@@ -47,6 +48,8 @@ const nextConfig = {
   pwa: {
     dest: 'public',
     disable: process.env.NODE_ENV === 'development',
+    runtimeCaching,
+    buildExcludes: [/middleware-manifest.json$/],
   },
 }
 
