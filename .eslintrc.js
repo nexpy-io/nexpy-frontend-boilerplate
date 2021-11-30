@@ -38,6 +38,7 @@ module.exports = {
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
     'react/react-in-jsx-scope': 'off',
     'react/no-unescaped-entities': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
     'react/jsx-props-no-spreading': 'off',
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
