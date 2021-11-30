@@ -1,4 +1,4 @@
-import { useMemo, createContext, useState, useCallback } from 'react'
+import { createContext, useState, Dispatch, SetStateAction } from 'react'
 
 import { DefaultComponentProps } from 'types/components'
 
@@ -10,9 +10,7 @@ type HeadValue = {
 
 type HeadContextValue = {
   head: HeadValue
-  setHeadTitle: (headTitle: string) => void
-  setHeadTitleDescription: (headTitleDescription: string) => void
-  setFaviconUrl: (faviconUrl: string) => void
+  setHead: Dispatch<SetStateAction<HeadValue>>
 }
 
 type HeadProviderProps = DefaultComponentProps
@@ -26,36 +24,14 @@ export const HeadProvider = ({ children }: HeadProviderProps) => {
     faviconUrl: '',
   })
 
-  const setHeadTitle = useCallback((headTitle: string) => {
-    setHead(state => ({
-      ...state,
-      headTitle,
-    }))
-  }, [])
-
-  const setHeadTitleDescription = useCallback((headTitleDescription: string) => {
-    setHead(state => ({
-      ...state,
-      headTitleDescription,
-    }))
-  }, [])
-
-  const setFaviconUrl = useCallback((faviconUrl: string) => {
-    setHead(state => ({
-      ...state,
-      faviconUrl,
-    }))
-  }, [])
-
-  const memoValue = useMemo(
-    () => ({
-      head,
-      setHeadTitle,
-      setHeadTitleDescription,
-      setFaviconUrl,
-    }),
-    [head, setFaviconUrl, setHeadTitle, setHeadTitleDescription]
+  return (
+    <HeadContext.Provider
+      value={{
+        head,
+        setHead,
+      }}
+    >
+      {children}
+    </HeadContext.Provider>
   )
-
-  return <HeadContext.Provider value={memoValue}>{children}</HeadContext.Provider>
 }

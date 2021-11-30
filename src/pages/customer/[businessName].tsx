@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps = async context => {
       ...defaultProps,
       businessSettings,
     },
-    revalidate: 60 * 5, // five minutes
+    revalidate: 60 * 60, // one hour
   }
 }
 

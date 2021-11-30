@@ -5,7 +5,7 @@ export type BusinessName = string
 export type BusinessInfo = {
   core: {
     useDefaultLoader: boolean
-    businessName: string
+    businessUniqueLabel: string
   }
   businessData: {
     businessName: BusinessName

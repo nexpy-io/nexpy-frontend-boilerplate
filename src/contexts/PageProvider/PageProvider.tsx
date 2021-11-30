@@ -1,85 +1,89 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 
-import merge from 'lodash/merge'
+import { usePossibleErrorHandler } from 'hooks'
 import useSWR from 'swr'
 
-import DynamicPageProvider from 'contexts/PageProvider/DynamicPageProvider'
+import PageProviderComposer from 'contexts/PageProvider/PageProviderComposer'
 import { businessSettingsService } from 'services/clientSide/businessSettings'
 
-import { removeEmpty } from 'utils/dataStructures/objects'
-import { captureException } from 'utils/sentry'
+import { deepMergeWithPreProcessors, removeEmpty } from 'utils/dataStructures/objects'
 import { sanitizeTheme } from 'utils/theme'
 
 import defaultBusinessInfo from 'settings/defaultBusinessInfo'
 import defaultTheme from 'theme/globalTheme'
 
+import { BusinessInfo, BusinessSettings } from 'types/businessSettings'
 import { PageProviderProps, PartialBusinessSettings } from 'types/pageProps'
+import { Theme } from 'types/theme'
 
-type CurrentBusinessInfo = PartialBusinessSettings | undefined
+type CurrentBusinessSettings = PartialBusinessSettings | undefined
 
 const PageProvider = ({
   children,
   currentLocale,
   businessSettings,
 }: PageProviderProps) => {
-  const [currentBusinessInfo, setCurrentBusinessInfo] =
-    useState<CurrentBusinessInfo>(businessSettings)
+  const [currentRevalidatedBusinessSettings, setCurrentRevalidatedBusinessSettings] =
+    useState<CurrentBusinessSettings>(businessSettings)
 
-  const ssrProvidedBusinessName = businessSettings?.businessInfo?.core.businessName
-  const businessSettingsTheme = currentBusinessInfo?.theme
-  const businessSettingsBusinessInfo = currentBusinessInfo?.businessInfo
+  const ssrProvidedBusinessName = businessSettings?.businessInfo?.core.businessUniqueLabel
 
-  const { data: revalidatedBusinessInfo, error: businessInfoRevalidationError } = useSWR(
-    () => `swr/businessData/revalidation<${ssrProvidedBusinessName || 'unknown'}>`,
-    () => {
-      if (ssrProvidedBusinessName) {
-        return businessSettingsService(ssrProvidedBusinessName)
+  const currentRevalidatedTheme = currentRevalidatedBusinessSettings?.theme
+  const currentResvalidatedBusinessInfo = currentRevalidatedBusinessSettings?.businessInfo
+
+  const { data: revalidatedBusinessSettings, error: businessSettingsRevalidationError } =
+    useSWR(
+      () => `swr/businessData/revalidation<${ssrProvidedBusinessName || 'unknown'}>`,
+      () => {
+        if (ssrProvidedBusinessName) {
+          return businessSettingsService(ssrProvidedBusinessName)
+        }
+
+        return undefined
       }
+    )
 
-      return undefined
-    }
-  )
+  const revalidatedBusinessInfoData = revalidatedBusinessSettings?.data
 
-  const theme = useMemo(() => {
-    if (businessSettingsTheme) {
-      const mergedBusinessFromProvider = merge(
-        {},
-        defaultTheme,
-        sanitizeTheme(removeEmpty(businessSettingsTheme))
-      )
-
-      return mergedBusinessFromProvider
+  const theme = useMemo<Theme>(() => {
+    if (currentRevalidatedTheme) {
+      return deepMergeWithPreProcessors<Theme>(defaultTheme, currentRevalidatedTheme, [
+        removeEmpty,
+        sanitizeTheme,
+      ])
     }
 
     return defaultTheme
-  }, [businessSettingsTheme])
+  }, [currentRevalidatedTheme])
 
-  const businessInfo = useMemo(() => {
-    if (businessSettingsBusinessInfo) {
-      return merge({}, defaultBusinessInfo, removeEmpty(businessSettingsBusinessInfo))
+  const businessInfo = useMemo<BusinessInfo>(() => {
+    if (currentResvalidatedBusinessInfo) {
+      return deepMergeWithPreProcessors<BusinessInfo>(
+        defaultBusinessInfo,
+        currentResvalidatedBusinessInfo,
+        [removeEmpty]
+      )
     }
 
     return defaultBusinessInfo
-  }, [businessSettingsBusinessInfo])
+  }, [currentResvalidatedBusinessInfo])
 
-  useEffect(() => {
-    if (businessInfoRevalidationError) {
-      captureException(businessInfoRevalidationError)
-
-      return
-    }
-
-    const revalidatedBusinessInfoData = revalidatedBusinessInfo?.data
-
-    if (revalidatedBusinessInfoData) {
-      setCurrentBusinessInfo(revalidatedBusinessInfoData)
-    }
-  }, [revalidatedBusinessInfo, businessInfoRevalidationError])
+  usePossibleErrorHandler<BusinessSettings>({
+    error: businessSettingsRevalidationError,
+    successValue: revalidatedBusinessInfoData,
+    onSuccess: successValue => {
+      setCurrentRevalidatedBusinessSettings(successValue)
+    },
+  })
 
   return (
-    <DynamicPageProvider theme={theme} locale={currentLocale} businessInfo={businessInfo}>
+    <PageProviderComposer
+      theme={theme}
+      locale={currentLocale}
+      businessInfo={businessInfo}
+    >
       {children}
-    </DynamicPageProvider>
+    </PageProviderComposer>
   )
 }
 

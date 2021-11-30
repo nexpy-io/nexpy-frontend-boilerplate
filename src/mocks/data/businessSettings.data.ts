@@ -16,7 +16,7 @@ export const businessSettings: BusinessSettings = {
   businessInfo: {
     core: {
       useDefaultLoader: false,
-      businessName: 'jaqueline-furtado',
+      businessUniqueLabel: 'jaqueline-furtado',
     },
     businessData: {
       businessName: 'Jaqueline Furtado',

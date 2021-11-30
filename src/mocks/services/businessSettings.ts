@@ -12,7 +12,7 @@ export const businessSettingsMockRequest = async (businessName: BusinessName) =>
   await delayPromise()
 
   return new Promise<AxiosResponse<BusinessSettings>>((resolve, reject) => {
-    if (businessName !== businessSettings.businessInfo.core.businessName) {
+    if (businessName !== businessSettings.businessInfo.core.businessUniqueLabel) {
       reject(new Error('Invalid businessName.'))
     } else if (RESOLVE_ALL) {
       resolve({

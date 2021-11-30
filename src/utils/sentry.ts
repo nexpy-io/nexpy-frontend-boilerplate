@@ -1,12 +1,9 @@
 /* eslint-disable no-console */
-import {
-  init,
-  captureException as sentryCaptureException,
-  flush,
-  Exception,
-} from '@sentry/nextjs'
+import { init, captureException as sentryCaptureException, flush } from '@sentry/nextjs'
 
 import { NEXT_PUBLIC_SENTRY_DSN, isProductionMode } from 'utils/environment'
+
+import { DefaultError } from 'types/exceptions'
 
 export const initSentry = () => {
   if (!isProductionMode()) {
@@ -36,7 +33,7 @@ export const initSentry = () => {
   }
 }
 
-export const captureException = async (error: Error | Exception | unknown) => {
+export const captureException = async (error: DefaultError) => {
   if (isProductionMode()) {
     try {
       sentryCaptureException(error)

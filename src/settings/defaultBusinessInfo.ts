@@ -3,7 +3,7 @@ import { BusinessInfo } from 'types/businessSettings'
 const defaultBusinessInfo: BusinessInfo = {
   core: {
     useDefaultLoader: true,
-    businessName: 'nexpy',
+    businessUniqueLabel: 'nexpy',
   },
   businessData: {
     businessName: 'Nexpy',
