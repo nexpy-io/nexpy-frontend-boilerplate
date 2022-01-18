@@ -1,4 +1,4 @@
-import { getObfuscatedToken, getUnobfuscatedToken } from 'utils/crypt'
+import { getObfuscatedToken, getUnobfuscatedToken } from '../crypt'
 
 describe('[ENVS]', () => {
   test('Test token obfuscators.', () => {

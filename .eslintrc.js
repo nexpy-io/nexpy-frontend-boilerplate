@@ -16,7 +16,14 @@ module.exports = {
     },
     project: './tsconfig.json',
   },
-  plugins: ['react', 'prettier', '@typescript-eslint', 'import-helpers', 'cypress'],
+  plugins: [
+    'react',
+    'prettier',
+    '@typescript-eslint',
+    'import-helpers',
+    'cypress',
+    'jest',
+  ],
   extends: [
     'airbnb',
     'airbnb-typescript',
@@ -32,6 +39,7 @@ module.exports = {
     'prettier',
     'next',
     'plugin:cypress/recommended',
+    'plugin:jest/recommended',
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
