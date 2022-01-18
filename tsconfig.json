@@ -11,7 +11,7 @@
     "module": "ESNEXT",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "./src/",
     "noImplicitAny": true,
@@ -19,6 +19,6 @@
     "incremental": true,
     "types": ["cypress"]
   },
-  "exclude": ["node_modules", "**/*.test.ts"],
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"],
   "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.js"]
 }
