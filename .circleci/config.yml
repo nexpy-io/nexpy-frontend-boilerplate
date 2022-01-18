@@ -83,7 +83,7 @@ jobs:
             - ./node_modules
       - run:
           name: Cypress e2e Tests
-          command: yarn e2e:headless:self-served
+          command: yarn ci:e2e:headless:self-served
 
 workflows:
   build:
