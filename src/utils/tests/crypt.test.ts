@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import { getObfuscatedToken, getUnobfuscatedToken } from '../crypt'
 
 describe('[ENVS]', () => {
