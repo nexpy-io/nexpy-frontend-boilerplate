@@ -69,12 +69,9 @@ jobs:
   e2e_test:
     working_directory: ~/repo
     docker:
-      - image: cypress/base:12
+      - image: cypress/base:17.3.0
     steps:
       - checkout
-      - run:
-          name: Install Linux Dependencies
-          command: curl -fsSL https://deb.nodesource.com/setup_17.x | bash - && apt-get install --upgrade -y nodejs
       - restore_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
