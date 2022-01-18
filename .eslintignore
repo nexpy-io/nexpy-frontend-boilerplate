@@ -6,6 +6,7 @@ node_modules
 .husky
 .vscode
 src/**/*.test*
+cypress/**/*.spec*
 coverage
 .storybook
 .circleci
