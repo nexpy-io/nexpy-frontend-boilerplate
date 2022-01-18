@@ -69,12 +69,12 @@ jobs:
   e2e_test:
     working_directory: ~/repo
     docker:
-      - image: ubuntu:latest
+      - image: cypress/base:12
     steps:
       - checkout
       - run:
           name: Install Linux Dependencies
-          command: apt-get install nodejs libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb && npm install --global yarn
+          command: apt-get install --upgrade nodejs
       - restore_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
