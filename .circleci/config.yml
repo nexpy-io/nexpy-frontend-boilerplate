@@ -74,7 +74,7 @@ jobs:
       - checkout
       - run:
           name: Install Linux Dependencies
-          command: apt-get install --upgrade nodejs
+          command: curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash - && apt-get install --upgrade -y nodejs
       - restore_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
