@@ -6,6 +6,7 @@
 
 [![License](https://img.shields.io/github/license/nexpy-io/nexpy-frontend-boilerplate?style=flat)](https://github.com/nexpy-io/frontend-boilerplate/blob/main/LICENSE)
 [![All Contributors](https://img.shields.io/github/all-contributors/nexpy-io/nexpy-frontend-boilerplate/main)](#contributors-)
+[![nexpy-io](https://circleci.com/gh/nexpy-io/nexpy-frontend-boilerplate.svg?style=svg)](https://app.circleci.com/pipelines/github/nexpy-io)
 
 <br />
 
