@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  build_test:
     working_directory: ~/repo
     docker:
       - image: cimg/node:16.4.0
@@ -47,7 +47,7 @@ jobs:
           name: Verify Code Quality and Integrity
           command: yarn eslint:check
 
-  test:
+  unitary_test:
     working_directory: ~/repo
     docker:
       - image: cimg/node:16.4.0
@@ -63,16 +63,38 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: Run tests
+          name: Jest Unitary Tests
           command: yarn test
+
+  e2e_test:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/node:16.4.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Cypress e2e Tests
+          command: yarn e2e:headless:self-served
 
 workflows:
   build:
     jobs:
-      - build
+      - build_test
   code_quality_and_integrity:
     jobs:
       - code_quality_and_integrity
-  test:
+  unitary_test:
     jobs:
-      - test
+      - unitary_test
+  e2e_test:
+    jobs:
+      - e2e_test
