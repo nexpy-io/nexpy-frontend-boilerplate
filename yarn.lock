@@ -3,12 +3,12 @@
 
 
 "@ampproject/remapping@^2.0.0":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.0.2.tgz#f3d9760bf30588c51408dbe7c05ff2bb13069307"
-  integrity sha512-sE8Gx+qSDMLoJvb3QarJJlDQK7SSY4rK3hxp4XsiANeFOmjU46ZI7Y9adAQRJrmbz8zbtZkp3mJTT+rGxtF0XA==
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.0.3.tgz#899999b5b7a5ce570d6d9bafdcc1e62cea466cf3"
+  integrity sha512-DmIAguV77yFP0MGVFWknCMgSLAtsLR3VlRTteR6xgMpIfYtwaZuMvjGv5YlpiqN7S/5q87DHyuIx8oa15kiyag==
   dependencies:
-    "@jridgewell/trace-mapping" "^0.2.2"
-    sourcemap-codec "1.4.8"
+    "@jridgewell/sourcemap-codec" "^1.4.9"
+    "@jridgewell/trace-mapping" "^0.2.7"
 
 "@apideck/better-ajv-errors@^0.3.1":
   version "0.3.2"
@@ -1599,7 +1599,7 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.9.tgz#6963babca1e1b8a8dc1c379bd4bd2bf9c21c356a"
   integrity sha512-iKsUDLGOrC5pSdVTyb8zJI/f55wItTzGtfGWiWPWTc8h2P4oucax7XOGSRq9V2aA1nwE8qMaGvwdXk3PZRtgjg==
 
-"@jridgewell/trace-mapping@^0.2.2":
+"@jridgewell/trace-mapping@^0.2.7":
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/@jridgewell/trace-mapping/-/trace-mapping-0.2.7.tgz#d45be64544788e32c7ea5c8faa16a7000d840b5b"
   integrity sha512-ZKfRhw6eK2vvdWqpU7DQq49+BZESqh5rmkYpNhuzkz01tapssl2sNNy6uMUIgrTtUWQDijomWJzJRCoevVrfgw==
@@ -12281,7 +12281,7 @@ source-map@^0.8.0-beta.0:
   dependencies:
     whatwg-url "^7.0.0"
 
-sourcemap-codec@1.4.8, sourcemap-codec@^1.4.4:
+sourcemap-codec@^1.4.4:
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
