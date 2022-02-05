@@ -5,7 +5,6 @@ module.exports = {
     node: true,
     es2020: true,
     commonjs: true,
-    jest: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -16,14 +15,7 @@ module.exports = {
     },
     project: './tsconfig.json',
   },
-  plugins: [
-    'react',
-    'prettier',
-    '@typescript-eslint',
-    'import-helpers',
-    'cypress',
-    'jest',
-  ],
+  plugins: ['react', 'prettier', '@typescript-eslint', 'import-helpers', 'cypress'],
   extends: [
     'airbnb',
     'airbnb-typescript',
@@ -39,7 +31,6 @@ module.exports = {
     'prettier',
     'next',
     'plugin:cypress/recommended',
-    'plugin:jest/recommended',
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],

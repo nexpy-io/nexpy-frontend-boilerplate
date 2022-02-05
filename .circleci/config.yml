@@ -66,25 +66,6 @@ jobs:
           name: Jest Unitary Tests
           command: yarn test
 
-  e2e_test:
-    working_directory: ~/repo
-    docker:
-      - image: cypress/base:14.18.1
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn
-      - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - ./node_modules
-      - run:
-          name: Cypress e2e Tests
-          command: yarn ci:e2e:headless:self-served
-
 workflows:
   build:
     jobs:
