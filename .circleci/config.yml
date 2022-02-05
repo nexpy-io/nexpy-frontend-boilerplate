@@ -47,25 +47,6 @@ jobs:
           name: Verify Code Quality and Integrity
           command: yarn eslint:check
 
-  unitary_test:
-    working_directory: ~/repo
-    docker:
-      - image: cimg/node:16.4.0
-    steps:
-      - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn
-      - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - ./node_modules
-      - run:
-          name: Jest Unitary Tests
-          command: yarn test
-
 workflows:
   build:
     jobs:
@@ -73,9 +54,3 @@ workflows:
   code_quality_and_integrity:
     jobs:
       - code_quality_and_integrity
-  unitary_test:
-    jobs:
-      - unitary_test
-  e2e_test:
-    jobs:
-      - e2e_test

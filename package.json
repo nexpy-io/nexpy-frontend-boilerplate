@@ -15,7 +15,6 @@
     "prettier:check": "prettier --check .",
     "eslint": "eslint --fix --max-warnings 0 .",
     "eslint:check": "eslint --max-warnings 0 .",
-    "test": "cross-env NODE_ENV=test jest",
     "e2e:open": "cypress open",
     "e2e:headless": "cypress run",
     "e2e:headless:record": "cypress run --record",
