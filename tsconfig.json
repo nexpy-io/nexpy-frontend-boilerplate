@@ -17,8 +17,8 @@
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "incremental": true,
-    "types": ["jest"]
+    "types": ["cypress"]
   },
-  "exclude": ["src/**/*.test.ts", "cypress/**/*.spec.ts"],
+  "exclude": [],
   "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.js"]
 }
