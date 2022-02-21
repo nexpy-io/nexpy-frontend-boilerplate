@@ -233,17 +233,6 @@ Created a production build for storybook.
 
 <br /><br />
 
-## Roadmap
-
-See what we are preparing for the future:
-
-- Theme configs;
-- Create a design system components with docs;
-- Auth;
-- Custom hooks.
-
-<br /><br />
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people:
