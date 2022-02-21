@@ -1,17 +1,17 @@
-import { GetStaticProps } from 'next'
-
-import PageWrapper from 'components/common/PageWrapper'
+import { GetStaticProps, NextPage } from 'next'
 
 import { Offline } from 'views'
+
+import PageProvider from 'contexts/PageProvider'
 
 import { getDefaultStaticProps } from 'utils/ssrPropGetters'
 
 import { PageProps } from 'types/pageProps'
 
-const Page = ({ currentLocale, businessSettings, ...props }: PageProps) => (
-  <PageWrapper currentLocale={currentLocale} businessSettings={businessSettings}>
-    <Offline {...props} />
-  </PageWrapper>
+const Page: NextPage<PageProps> = ({ currentLocale }) => (
+  <PageProvider currentLocale={currentLocale}>
+    <Offline />
+  </PageProvider>
 )
 
 export const getStaticProps: GetStaticProps = async context => {

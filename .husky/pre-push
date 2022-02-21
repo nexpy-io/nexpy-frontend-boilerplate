@@ -8,4 +8,4 @@ echo "Running eslint checks..."
 yarn --silent eslint:check
 
 echo "Running type checks..."
-yarn --silent type-check
+yarn --silent type:check

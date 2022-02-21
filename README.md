@@ -146,7 +146,7 @@ Note: PORT can not be set in .env as booting up the HTTP server happens before a
 ### Check typing
 
 ```sh
-yarn type-check
+yarn type:check
 ```
 
 Run a test using the TypeScript compiler to identify code typing failures.
