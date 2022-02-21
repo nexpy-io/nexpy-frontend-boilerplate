@@ -1,6 +1,8 @@
-export const AUTHORIZATION_COOKIE_NAME = 'Nexpy.authToken'
+export const BUSINESS_NAME = 'Nexpy'
 
-export const REFRESH_COOKIE_NAME = 'Nexpy.refreshToken'
+export const AUTHORIZATION_COOKIE_NAME = `${BUSINESS_NAME}.authToken`
+
+export const REFRESH_COOKIE_NAME = `${BUSINESS_NAME}.refreshToken`
 
 export const DEFAULT_TOKEN_TYPE = 'Bearer'
 

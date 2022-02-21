@@ -1,1 +1,3 @@
-export const OBFUSCATED_TOKEN_PREFIX = 'Nexpy-'
+import { BUSINESS_NAME } from 'constants/auth'
+
+export const OBFUSCATED_TOKEN_PREFIX = `${BUSINESS_NAME}-`

@@ -8,7 +8,7 @@ import { Identifier } from 'types/locales'
 
 const languages = getLanguages()
 
-const useTranslate = () => {
+export const useTranslate = () => {
   const currentLocale = useContext(LocaleContext)
 
   if (currentLocale === undefined) {
@@ -23,5 +23,3 @@ const useTranslate = () => {
 
   return { t, currentLocale }
 }
-
-export default useTranslate

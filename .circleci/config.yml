@@ -39,7 +39,7 @@ jobs:
             - ./node_modules
       - run:
           name: Type Check
-          command: yarn type-check
+          command: yarn type:check
       - run:
           name: Verify Code Style
           command: yarn prettier:check

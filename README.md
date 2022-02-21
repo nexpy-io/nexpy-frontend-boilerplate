@@ -146,7 +146,7 @@ Note: PORT can not be set in .env as booting up the HTTP server happens before a
 ### Check typing
 
 ```sh
-yarn type-check
+yarn type:check
 ```
 
 Run a test using the TypeScript compiler to identify code typing failures.
@@ -203,7 +203,7 @@ Looks for code integrity errors in all files without changing them, reporting po
 
 <br /><br />
 
-### Test the application
+### Test the application (not implemented yet)
 
 ```sh
 yarn test
