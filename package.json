@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postinstall": "husky install",
-    "reinstall": "yarn concurrently \"rm -rf ./node_modules\" \"rm -rf ./yarn.lock ./package-lock.json ./.next ./storybook-static coverage\" && yarn",
+    "reinstall": "yarn concurrently \"rm -rf ./node_modules\" \"rm -rf ./yarn.lock ./package-lock.json ./.next ./storybook-static\" && yarn",
     "dev": "next dev",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
@@ -79,7 +79,6 @@
     "eslint-config-next": "^12.1.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-import-resolver-babel-module": "^5.2.0",
-    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-import-helpers": "^1.2.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
