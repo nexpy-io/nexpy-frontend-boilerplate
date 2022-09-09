@@ -1,48 +1,34 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-console */
-import { init, captureException as sentryCaptureException, flush } from '@sentry/nextjs'
 
-import { NEXT_PUBLIC_SENTRY_DSN, isProductionMode } from 'utils/environment'
+import { captureException as sentryCaptureException, flush } from '@sentry/nextjs'
+import { isProductionMode } from 'environment'
+
+import { BUSINESS_NAME } from 'constants/company'
 
 import { DefaultError } from 'types/exceptions'
 
-export const initSentry = () => {
-  if (!isProductionMode()) {
-    console.debug('[MONITORING] Sentry skipped.')
-
-    return
-  }
-
-  if (!NEXT_PUBLIC_SENTRY_DSN) {
-    console.error(
-      '[MONITORING] Sentry not loaded. A valid DSN config could not be found.'
-    )
-
-    return
-  }
-
-  try {
-    init({
-      enabled: isProductionMode(),
-      dsn: NEXT_PUBLIC_SENTRY_DSN,
-    })
-  } catch (error) {
-    console.error(
-      '[MONITORING] Sentry not loaded. An error was encountered when starting Sentry.\n',
-      error
-    )
-  }
-}
+import { isNavigatorOnline } from './connection'
 
 export const captureException = async (error: DefaultError) => {
-  if (isProductionMode()) {
+  if (isProductionMode) {
     try {
+      if (!isNavigatorOnline) {
+        console.error(
+          '[MONITORING] Error capture skipped. No internet connection.',
+          error
+        )
+
+        return
+      }
+
       sentryCaptureException(error)
 
       const success = await flush(5000)
 
       if (!success) {
         throw new Error(
-          `Flush pass: false. It may not have been possible to send exception data to Nexpy servers. Please report this bug! ${String(
+          `Flush pass: false. It may not have been possible to send exception data to ${BUSINESS_NAME} servers. Please report this bug! ${String(
             error
           )}`
         )
@@ -56,7 +42,8 @@ export const captureException = async (error: DefaultError) => {
       )
     } catch {
       console.error(
-        '[MONITORING] It was not possible to send exception data for Nexpy servers. Please report this bug!\n',
+        `[MONITORING] It was not possible to send exception data for ${BUSINESS_NAME} servers. Please report this bug!
+`,
         error
       )
     }
