@@ -1,25 +1,36 @@
-import { useContext } from 'react'
+import { useMemo, useCallback } from 'react'
 
 import { LocaleContext } from 'contexts/LocaleContext'
 
-import getLanguages from 'locales'
+import { languages } from 'locales'
 
 import { Identifier } from 'types/locales'
 
-const languages = getLanguages()
-
 export const useTranslate = () => {
-  const currentLocale = useContext(LocaleContext)
+  const localeContextValue = LocaleContext.useContext()
 
-  if (currentLocale === undefined) {
+  if (localeContextValue === undefined) {
     throw new Error('useTranslate must be used within a LocaleProvider from contexts.')
   }
 
-  const t = (identifier: Identifier) => {
-    const currentLanguage = languages[currentLocale]
+  const currentLocaleId = localeContextValue.currentLocale
 
-    return currentLanguage[identifier] ?? ''
+  const currentLocaleTextData = useMemo(
+    () => languages[currentLocaleId],
+    [currentLocaleId]
+  )
+
+  const t = useCallback(
+    (identifier: Identifier) => {
+      return currentLocaleTextData[identifier] ?? ''
+    },
+    [currentLocaleTextData]
+  )
+
+  return {
+    t,
+    localeContextValue,
+    currentLocale: currentLocaleId,
+    defaultLocale: localeContextValue.defaultLocale,
   }
-
-  return { t, currentLocale }
 }

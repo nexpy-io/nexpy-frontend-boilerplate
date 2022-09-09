@@ -1,6 +1,4 @@
-import getLanguages from 'locales'
-
-const languages = getLanguages()
+import { languages } from 'locales'
 
 export type LocaleKeys = keyof typeof languages
 

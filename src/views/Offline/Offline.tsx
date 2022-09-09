@@ -1,28 +1,20 @@
+import { Flex, Text } from '@nexpy/design-system'
 import { useTranslate } from 'hooks'
 
-import Div from 'components/atoms/Div'
-import P from 'components/atoms/P'
+import StarLink from 'components/icons/StarLink'
 
 const Offline = () => {
   const { t } = useTranslate()
 
   return (
-    <Div
-      display='flex'
-      justifyContent='center'
-      alignItems='center'
-      w='100vw'
-      h='100vh'
-      p='46px'
-      flexDirection='column'
-    >
-      <P as='h1' fontSize='3rem' textAlign='center'>
-        Oops...
-      </P>
-      <P mt='8px' as='h2' textAlign='center' maxWidth='400px'>
-        {t('internal.offline')}
-      </P>
-    </Div>
+    <Flex flexDirection='column' variant='center' minHeight='42.5vh' mt='2.4rem'>
+      <Flex variant='center' flexDirection='column' gap='2.4rem'>
+        <StarLink />
+        <Text maxWidth={{ _: '20rem', lg: '40rem' }} textAlign='center'>
+          {t('internal.dialog.offline')}
+        </Text>
+      </Flex>
+    </Flex>
   )
 }
 

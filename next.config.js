@@ -1,10 +1,31 @@
-const withPlugins = require('next-compose-plugins')
+const { withSentryConfig } = require('@sentry/nextjs')
 
 const withMDX = require('@next/mdx')({ extension: /\.mdx?$/ })
-const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
+const runtimeCaching = require('./runtimeCaching.config')
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
-const plugins = [withMDX, withPWA]
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable:
+    process.env.NODE_ENV === 'development'
+      ? !(process.env.USE_DEVELOPMENT_SERVICE_WORKER_DEBUG_MODE === 'true')
+      : false,
+  runtimeCaching,
+  buildExcludes: [/middleware-manifest.json$/],
+  reloadOnOnline: true,
+  maximumFileSizeToCacheInBytes: 31457280, // 30 MB
+})
+
+const plugins = [withMDX, withPWA, withBundleAnalyzer]
+
+const sentryWebpackPluginOptions = {
+  silent: true,
+}
+
+const AVAILABLE_LOCALES = ['en', 'pt']
+const DEFAULT_LOCALE = 'pt'
 
 const securityHeaders = [
   {
@@ -40,17 +61,19 @@ const nextConfig = {
   },
   reactStrictMode: true,
   poweredByHeader: false,
-  pageExtensions: ['tsx', 'mdx'],
-  i18n: {
-    locales: ['en', 'pt'],
-    defaultLocale: 'pt',
+  pageExtensions: ['ts', 'tsx', 'mdx'],
+  publicRuntimeConfig: {
+    locales: AVAILABLE_LOCALES,
+    defaultLocale: DEFAULT_LOCALE,
   },
-  pwa: {
-    dest: 'public',
-    disable: process.env.NODE_ENV === 'development',
-    runtimeCaching,
-    buildExcludes: [/middleware-manifest.json$/],
+  i18n: {
+    locales: AVAILABLE_LOCALES,
+    defaultLocale: DEFAULT_LOCALE,
   },
 }
 
-module.exports = withPlugins([...plugins], nextConfig)
+module.exports = plugins.reduce((acc, plugin) => plugin(acc), {
+  ...(process.env.NEXT_PUBLIC_IN_LOCAL_DEVELOPMENT
+    ? nextConfig
+    : withSentryConfig(nextConfig, sentryWebpackPluginOptions)),
+})
