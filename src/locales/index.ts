@@ -1,14 +1,18 @@
 // To set a new language, import the language file and put it in the languages
 // object. Set available languages and default language in `next.config.js` file.
 
-import en from 'locales/languages/en.json'
-import pt from 'locales/languages/pt.json'
+import { validateServerLanguageMatch } from 'utils/serverValidations'
 
-const languages = {
+import { LocaleKeys } from 'types/locales'
+
+import en from './source/en.json'
+import pt from './source/pt.json'
+
+export const languages = {
   en,
   pt,
 }
 
-const getLanguages = () => languages
+export const clientAvailableLanguages = Object.keys(languages) as LocaleKeys[]
 
-export default getLanguages
+validateServerLanguageMatch(clientAvailableLanguages, 'global')
