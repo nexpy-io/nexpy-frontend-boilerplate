@@ -17,8 +17,8 @@
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "incremental": true,
-    "types": []
+    "types": ["jest", "@testing-library/jest-dom"]
   },
-  "exclude": [],
+  "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.js"]
 }
