@@ -1,6 +1,6 @@
 {
   "name": "nexpy-frontend-boilerplate",
-  "version": "1.1.5",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "prepare": "husky install",
