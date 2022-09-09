@@ -3,7 +3,7 @@ jobs:
   build_test:
     working_directory: ~/repo
     docker:
-      - image: node:17
+      - image: node:18
     steps:
       - checkout
       - restore_cache:
@@ -25,7 +25,7 @@ jobs:
   code_quality_and_integrity:
     working_directory: ~/repo
     docker:
-      - image: node:17
+      - image: node:18
     steps:
       - checkout
       - restore_cache:
