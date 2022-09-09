@@ -1,21 +1,21 @@
 import { Flex, Text } from '@nexpy/design-system'
 import { useTranslate } from 'hooks'
 
-import StarLink from 'components/icons/StarLink'
+import NotFoundImage from 'components/icons/NotFound'
 
-const Offline = () => {
+const NotFound = () => {
   const { t } = useTranslate()
 
   return (
     <Flex flexDirection='column' variant='center' minHeight='42.5vh' mt='2.4rem'>
       <Flex variant='center' flexDirection='column' gap='2.4rem'>
-        <StarLink />
+        <NotFoundImage />
         <Text maxWidth={{ _: '20rem', lg: '40rem' }} textAlign='center'>
-          {t('internal.dialog.offline')}
+          {t('internal.dialog.not_found')}
         </Text>
       </Flex>
     </Flex>
   )
 }
 
-export default Offline
+export default NotFound
