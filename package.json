@@ -20,7 +20,7 @@
     "eslint": "eslint --fix --max-warnings 0 .",
     "eslint:check": "eslint --max-warnings 0 .",
     "storybook": "start-storybook -p 6006",
-    "build:storybook": "build-storybook"
+    "build:storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.1.3",
