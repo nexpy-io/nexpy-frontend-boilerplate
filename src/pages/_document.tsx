@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 
 import { ServerStyleSheet } from 'styled-components'
@@ -10,7 +12,7 @@ export default class MyDocument extends Document {
     try {
       context.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App: any) => props => sheet.collectStyles(<App {...props} />),
         })
 
       const initialProps = await Document.getInitialProps(context)
@@ -23,7 +25,7 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </>
         ),
-      }
+      } as any
     } finally {
       sheet.seal()
     }
