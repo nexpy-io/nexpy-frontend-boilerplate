@@ -2,10 +2,9 @@
   <img src="https://user-images.githubusercontent.com/41436010/125207308-fbd9eb80-e261-11eb-98e4-7ae01ad1f143.png" width="600">
 </p>
 
-# nexpy-frontend-boilerplate
+# Nexpy Front-end Boilerplate
 
 [![License](https://img.shields.io/github/license/nexpy-io/nexpy-frontend-boilerplate?style=flat)](https://github.com/nexpy-io/frontend-boilerplate/blob/main/LICENSE)
-[![All Contributors](https://img.shields.io/github/all-contributors/nexpy-io/nexpy-frontend-boilerplate/main)](#contributors-)
 [![nexpy-io](https://circleci.com/gh/nexpy-io/nexpy-frontend-boilerplate.svg?style=svg)](https://app.circleci.com/pipelines/github/nexpy-io)
 
 <br />
@@ -56,23 +55,48 @@ This command will install the husky hooks in the git repository to control prepr
 
 <br />
 
-#### The main technologies used
+### Technologies used
 
-- [React Hook Form](https://react-hook-form.com/)
-- [XStyled](https://xstyled.dev/)
-- [Axios](https://www.npmjs.com/package/axios)
-- [Lodash](https://lodash.com/)
-- [Sass](https://sass-lang.com/)
-- [SWR](https://swr.vercel.app/)
-- [Use Context Selector](https://www.npmjs.com/package/use-context-selector/v/2.0.0-alpha.5)
-- [Yup](https://www.npmjs.com/package/yup)
-- [Sentry](https://sentry.io/)
+In this project you can find several interesting technologies, such as:
+
+- [@nexpy/design-system](https://github.com/nexpy-io/nexpy-design-system)
+
+  [NPM](https://www.npmjs.com/package/@nexpy/design-system)
+
+  [Docs](https://design-system.nexpy.app/)
+
+  Open source library of components and styles based on @sxtyled/styled-components.
+
+  By using this lib, we adopt the possibility of full styling via prop and the full reuse of even the most basic components.
+  This increases the scalability by a million times while making the final bundle much smaller.
+
+- [@nexpy/react-easy-context-api](https://github.com/nexpy-io/react-easy-context-api)
+
+  [NPM](https://www.npmjs.com/package/@nexpy/react-easy-context-api)
+
+  Another open source library created by [Allan Oliveira](https://github.com/AllanOliveiraM), was dedicated to improving performance and making it easier to use contexts in React.
+
+- Sentry
+
+- PWA
+
+- Jest
+
+- Cypress
+
+- Mobile gesture control
+
+- Next.js and server side/static generation
 
 There are others being used and they can be found in the development dependencies and dependencies section of the package.json file.
 
 <br /><br />
 
 ## Available scripts and usage
+
+initially, use the sample environment variables `.env.example` file to create your `.env` own file.
+
+Note that the `NEXT_PUBLIC_SENTRY_DSN` variable is not mandatory if `NEXT_PUBLIC_IN_LOCAL_DEVELOPMENT=true` is set.
 
 If you look at the scripts inside package.json you will see several methods, among them:
 
@@ -153,16 +177,6 @@ Run a test using the TypeScript compiler to identify code typing failures.
 
 <br /><br />
 
-### Start debug server
-
-```sh
-yarn debug
-```
-
-Starts the development server with debug options. V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances.
-
-<br /><br />
-
 ### Automatically format code
 
 ```sh
@@ -203,7 +217,7 @@ Looks for code integrity errors in all files without changing them, reporting po
 
 <br /><br />
 
-### Test the application (not implemented yet)
+### Test the application
 
 ```sh
 yarn test
@@ -219,7 +233,7 @@ Run the automated tests using [jest](https://jestjs.io/).
 yarn storybook
 ```
 
-A server with a fast refresh for components documentation development. Do not use for production.
+A server with a fast refresh for components documentation development (Docs). Do not use for production.
 
 <br /><br />
 
@@ -229,28 +243,9 @@ A server with a fast refresh for components documentation development. Do not us
 yarn build:storybook
 ```
 
-Created a production build for storybook.
+Created a production build for storybook (Docs).
 
 <br /><br />
-
-## Contributors ✨
-
-Thanks goes to these wonderful people:
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/camilaffonseca"><img src="https://avatars.githubusercontent.com/u/54648900?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Camila Fonseca</b></sub></a><br /><a href="https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate/commits?author=camilaffonseca" title="Code">💻</a> <a href="#ideas-camilaffonseca" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://github.com/AllanOliveiraM"><img src="https://avatars.githubusercontent.com/u/41436010?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Allan Oliveira Miraballes</b></sub></a><br /><a href="https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate/commits?author=AllanOliveiraM" title="Code">💻</a> <a href="https://github.com/AllanOliveiraM/nexpy-frontend-boilerplate/commits?author=AllanOliveiraM" title="Documentation">📖</a> <a href="#ideas-AllanOliveiraM" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-AllanOliveiraM" title="Maintenance">🚧</a> <a href="#projectManagement-AllanOliveiraM" title="Project Management">📆</a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 <br />
 

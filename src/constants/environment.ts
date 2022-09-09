@@ -1,6 +1,6 @@
 export const PRODUCTION_ENVIRONMENT_NAMES = ['production']
 
-export const LOCAL_ENVIRONMENT_NAMES = ['development', 'test']
+export const LOCAL_ENVIRONMENT_NAMES = ['development', 'staging']
 
 export const DEFAULT_PRODUCTION_ENVIRONMENT_NAME = 'production'
 

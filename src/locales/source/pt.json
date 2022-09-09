@@ -1,0 +1,8 @@
+{
+  "home.hello": "Olá",
+  "home.description": "Esta é a versão de produção do boilerplate frontend da Nexpy. Este boilerplate é baseado em Typescript e Next.js e é de código aberto.",
+  "home.use": "Você pode usá-lo em seus projetos e modelos, ou contribuir com melhorias e novos recursos!",
+  "internal.dialog.server_error": "Ocorreu um erro interno do servidor e os dados do erro já foram enviados automaticamente para o suporte. Tente novemente mais tarde.",
+  "internal.dialog.offline": "Aparentemente você está offline. Verifique a sua conexão com a internet e tente novamente.",
+  "internal.dialog.not_found": "O recurso que você está tentando acessar não existe ou foi movido permanentemente. Mas você ainda pode vasculhar coisas incríveis navegando pelo restante do site."
+}

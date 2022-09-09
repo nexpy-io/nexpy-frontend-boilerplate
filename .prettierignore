@@ -5,6 +5,7 @@ node_modules
 .vscode
 coverage
 .storybook
+storybook-static
 .circleci
 
 # PWA files
