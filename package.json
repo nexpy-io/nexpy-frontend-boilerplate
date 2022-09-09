@@ -110,7 +110,7 @@
   "engines": {
     "npm": "please-use-yarn",
     "yarn": ">= 1.22.17",
-    "node": ">= 16.14.0"
+    "node": ">= 17.9.1"
   },
   "config": {
     "commitizen": {
