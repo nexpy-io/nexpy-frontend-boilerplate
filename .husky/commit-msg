@@ -2,4 +2,12 @@
 . "$(dirname "$0")/_/husky.sh"
 
 echo "Running commitlint..."
-yarn --silent commitlint --edit "$1"
+
+if yarn --silent commitlint --edit "$1"; then
+  exit 0
+else
+  echo "\033[1;31mThe commit is not formatted according to the rules above. You can run\nthe following command for commits to make formatting easier\n"
+  echo "\033[1;31m- yarn commit\n\033[0;31m"
+
+  exit 1
+fi
